@@ -1,5 +1,22 @@
-peticion: http://127.0.0.1:5500/index.html
+Analisis de la peticion al servidor
+URL solicitada: http://127.0.0.1:5500/index.html
+Respuesta observada anteriormente: 403 Forbidden. El servidor encontro el recurso, pero denego el acceso; no es un error 404 de ruta inexistente.
+Al navegar, el navegador solicita cada documento y sus recursos al servidor. Una respuesta 2xx indica exito; 403 indica acceso prohibido y 404 indica que la ruta no existe.
 
-respuesta a direccion no encontrada: 403 forbiden , la página o el archivo sí existen, pero el servidor te impide verlos.
+Roles de las tecnologias
+HTML define la estructura y el contenido semantico de las paginas.
+CSS controla la presentacion visual, como colores, espaciado y tipografia.
+JavaScript agrega comportamiento e interactividad; estas paginas no lo necesitan para navegar entre ellas.
 
-HTML: para la estructura visual de la pagina junto con CSS, y javascript servira para el funcionamiento de la pagina.
+Tabla de rutas relativas del menu
+Archivo de origen         | Destino             | Ruta escrita
+--------------------------|---------------------|----------------------
+index.html                | Inicio              | index.html
+index.html                | Tarifas y rutas     | paginas/tarifas.html
+index.html                | Reservas            | paginas/reservas.html
+paginas/tarifas.html       | Inicio              | ../index.html
+paginas/tarifas.html       | Tarifas y rutas     | tarifas.html
+paginas/tarifas.html       | Reservas            | reservas.html
+paginas/reservas.html      | Inicio              | ../index.html
+paginas/reservas.html      | Tarifas y rutas     | tarifas.html
+paginas/reservas.html      | Reservas            | reservas.html
