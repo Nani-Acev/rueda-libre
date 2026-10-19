@@ -1,0 +1,5 @@
+peticion: http://127.0.0.1:5500/index.html
+
+respuesta a direccion no encontrada: 403 forbiden , la página o el archivo sí existen, pero el servidor te impide verlos.
+
+HTML: para la estructura visual de la pagina junto con CSS, y javascript servira para el funcionamiento de la pagina.
