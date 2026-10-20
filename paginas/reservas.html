@@ -18,6 +18,26 @@
         a {
             color: #176b52;
         }
+
+        fieldset {
+            margin: 0 0 24px;
+            padding: 16px;
+        }
+
+        .campo {
+            margin-bottom: 16px;
+        }
+
+        .campo > label,
+        .opcion label {
+            display: block;
+        }
+
+        input,
+        select,
+        textarea {
+            max-width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -34,6 +54,101 @@
     </header>
 
     <main>
+        <section aria-labelledby="formulario-reserva">
+            <h2 id="formulario-reserva">Formulario de reserva</h2>
+            <form action="reservas.html" method="post">
+                <fieldset>
+                    <legend>Tus datos</legend>
+
+                    <div class="campo">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" autocomplete="name">
+                    </div>
+
+                    <div class="campo">
+                        <label for="documento">Número de documento</label>
+                        <input type="text" id="documento" name="documento">
+                    </div>
+
+                    <div class="campo">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" autocomplete="email">
+                    </div>
+
+                    <div class="campo">
+                        <label for="celular">Celular</label>
+                        <input type="tel" id="celular" name="celular" autocomplete="tel">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Tu alquiler</legend>
+
+                    <div class="campo">
+                        <label for="fecha">Fecha del alquiler</label>
+                        <input type="date" id="fecha" name="fecha">
+                    </div>
+
+                    <div class="campo">
+                        <span>Tipo de bicicleta</span>
+                        <div class="opcion">
+                            <input type="radio" id="bicicleta-urbana" name="tipo-bicicleta" value="urbana">
+                            <label for="bicicleta-urbana">Urbana</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="bicicleta-montana" name="tipo-bicicleta" value="montana">
+                            <label for="bicicleta-montana">Montaña</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="bicicleta-electrica" name="tipo-bicicleta" value="electrica">
+                            <label for="bicicleta-electrica">Eléctrica</label>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="plan">Plan</label>
+                        <select id="plan" name="plan">
+                            <option value="">Selecciona un plan</option>
+                            <option value="1-hora">1 hora</option>
+                            <option value="medio-dia">Medio día</option>
+                            <option value="dia-completo">Día completo</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="cantidad">Cantidad de bicicletas</label>
+                        <input type="number" id="cantidad" name="cantidad">
+                    </div>
+
+                    <div class="campo">
+                        <label for="recorrido">Recorrido guiado</label>
+                        <select id="recorrido" name="recorrido">
+                            <option value="ninguno">Ninguno</option>
+                            <option value="rio-y-parques">Río y Parques</option>
+                            <option value="sabores-de-barrio">Sabores de Barrio</option>
+                            <option value="reto-las-palmas">Reto Las Palmas</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Confirmación</legend>
+
+                    <div class="campo">
+                        <label for="comentarios">Comentarios</label>
+                        <textarea id="comentarios" name="comentarios" rows="4"></textarea>
+                    </div>
+
+                    <div class="campo">
+                        <input type="checkbox" id="politicas" name="politicas" value="aceptadas">
+                        <label for="politicas">Acepto las políticas de alquiler</label>
+                    </div>
+                </fieldset>
+
+                <button type="submit">Enviar reserva</button>
+            </form>
+        </section>
+
         <section aria-labelledby="contacto">
             <h2 id="contacto">Contacto</h2>
             <p>Para consultar disponibilidad, escríbenos a <a href="mailto:hola@ruedalibre.gmail.com">hola@ruedalibre.gmail.com</a>.</p>
