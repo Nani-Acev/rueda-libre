@@ -3,6 +3,47 @@ URL solicitada: http://127.0.0.1:5500/index.html
 Respuesta observada anteriormente: 403 Forbidden. El servidor encontro el recurso, pero denego el acceso; no es un error 404 de ruta inexistente.
 Al navegar, el navegador solicita cada documento y sus recursos al servidor. Una respuesta 2xx indica exito; 403 indica acceso prohibido y 404 indica que la ruta no existe.
 
+Esquema de regiones semanticas (antes de editar el HTML)
+
+Inicio (index.html)
+header
+  identidad: nombre del negocio, logo y presentacion breve
+  nav principal: Inicio | Tarifas y rutas | Reservas
+main
+  contenido introductorio y enlace al punto de alquiler
+  section "¿Quienes somos?"
+  section "Nuestros servicios"
+    article "Alquiler por horas"
+    article "Alquiler por dia"
+    article "Rutas guiadas"
+  section "¿Como alquilar?"
+  section "Encuentranos"
+  enlace "Reservar ahora"
+footer
+
+Tarifas y recorridos (paginas/tarifas.html)
+header
+  identidad: logo y titulo de la pagina
+  nav principal: Inicio | Tarifas y rutas | Reservas
+main
+  section "Tarifas de alquiler" (tabla)
+  section "Precios de recorridos guiados" (tabla)
+  aside de informacion complementaria
+    lista "Que llevar"
+footer
+
+Reservas (paginas/reservas.html)
+header
+  identidad: nombre del negocio y titulo de la pagina
+  nav principal: Inicio | Tarifas y rutas | Reservas
+main
+  section "Contacto"
+  aside "Horario de atencion"
+footer
+
+No se requieren div ni span: los bloques tienen un equivalente semantico
+apropiado (header, nav, main, section, article, aside o footer).
+
 Roles de las tecnologias
 HTML define la estructura y el contenido semantico de las paginas.
 CSS controla la presentacion visual, como colores, espaciado y tipografia.
