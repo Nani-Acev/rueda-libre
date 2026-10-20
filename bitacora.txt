@@ -77,3 +77,40 @@ Elecciones de controles:
 Cada control tiene un id relacionado con su label mediante for y un name para el
 envío. El formulario usa POST y apunta a reservas.html; el sitio es estático y
 aún no tiene un servicio que procese las reservas.
+
+MiniReto 7: validación nativa y navegación por teclado
+Las reglas se implementaron con atributos HTML nativos en reservas.html.
+El documento acepta de 6 a 10 dígitos; el celular acepta 10 dígitos que
+comienzan por 3. Ambos campos muestran el formato esperado. La fecha permitida
+va del 1 de noviembre al 31 de diciembre de 2026, inclusive.
+
+Tabla de pruebas ejecutadas en el navegador
+Campo                  | Dato de prueba                 | Resultado esperado                    | Resultado obtenido
+-----------------------|--------------------------------|---------------------------------------|-------------------
+Nombre completo        | Li                             | Rechazado (menos de 3 caracteres)     | Inválido; bloqueado
+Documento              | 12AB56                         | Rechazado (contiene letras)           | Inválido; bloqueado
+Documento              | 123456                         | Aceptado (6 dígitos)                  | Válido
+Correo                 | correo-invalido                | Rechazado (formato incorrecto)        | Inválido; bloqueado
+Celular                | 3001234567                     | Aceptado                              | Válido
+Celular                | 1234567890                     | Rechazado (no empieza por 3)          | Inválido; bloqueado
+Celular                | 300123                         | Rechazado (menos de 10 dígitos)       | Inválido; bloqueado
+Fecha                  | 2026-10-31                     | Rechazada (anterior al rango)         | Inválida; bloqueada
+Fecha                  | 2026-11-01                     | Aceptada (primer día permitido)       | Válida
+Fecha                  | 2026-12-31                     | Aceptada (último día permitido)       | Válida
+Fecha                  | 2027-01-01                     | Rechazada (posterior al rango)        | Inválida; bloqueada
+Cantidad               | 0                              | Rechazada (menor que 1)               | Inválida; bloqueada
+Cantidad               | 1 y 6                          | Aceptados (límites permitidos)        | Válidos
+Cantidad               | 7                              | Rechazada (mayor que 6)               | Inválida; bloqueada
+Cantidad               | 2.5                            | Rechazada (no es entero)              | Inválida; bloqueada
+Comentarios            | 301 caracteres                 | Limitar a máximo 300                 | El control limitó el texto a 300
+Plan                   | Sin seleccionar                | Rechazado                             | Inválido; bloqueado
+Tipo de bicicleta      | Sin seleccionar                | Rechazado                             | Inválido; bloqueado
+Políticas              | Casilla sin marcar             | Rechazado                             | Inválido; bloqueado
+Formulario completo    | Todos los datos válidos        | Aceptado por validación               | Válido
+
+Recorrido de teclado: Tab avanza en el orden del formulario y Shift+Tab
+retrocede; las flechas cambian la opción de bicicleta seleccionada, Espacio
+alterna la casilla de políticas y Enter no envía el formulario si falta un
+campo requerido. Se comprobó el recorrido inverso desde el botón hasta el
+grupo de bicicletas. La página sigue siendo estática y no procesa ni guarda
+reservas en un servidor.
