@@ -61,3 +61,19 @@ paginas/tarifas.html       | Reservas            | reservas.html
 paginas/reservas.html      | Inicio              | ../index.html
 paginas/reservas.html      | Tarifas y rutas     | tarifas.html
 paginas/reservas.html      | Reservas            | reservas.html
+
+MiniReto 6: formulario de reserva
+En reservas.html agregue el formulario dentro de main y lo organicé en los
+grupos "Tus datos", "Tu alquiler" y "Confirmación".
+
+Elecciones de controles:
+- Correo electrónico usa input type="email" para identificar el dato y permitir
+  que el navegador compruebe su formato básico.
+- Tipo de bicicleta usa opciones radio con el mismo name, porque se debe elegir
+  una sola alternativa entre urbana, montaña y eléctrica.
+- Recorrido guiado usa una lista desplegable porque permite elegir una opción
+  entre ninguna y las tres rutas sin ocupar espacio con opciones siempre visibles.
+
+Cada control tiene un id relacionado con su label mediante for y un name para el
+envío. El formulario usa POST y apunta a reservas.html; el sitio es estático y
+aún no tiene un servicio que procese las reservas.
