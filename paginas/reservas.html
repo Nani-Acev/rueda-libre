@@ -19,6 +19,25 @@
             color: #176b52;
         }
 
+        :focus-visible {
+            outline: 3px solid #14213d;
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 24px;
+            z-index: 1;
+            padding: 8px 12px;
+            background: #14213d;
+            color: #fff;
+        }
+
+        .skip-link:focus {
+            top: 24px;
+        }
+
         fieldset {
             margin: 0 0 24px;
             padding: 16px;
@@ -41,19 +60,20 @@
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
     <header>
         <nav aria-label="Navegación principal">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="tarifas.html">Tarifas y rutas</a></li>
-                <li><a href="reservas.html">Reservas</a></li>
+                <li><a href="reservas.html" aria-current="page">Reservas</a></li>
             </ul>
         </nav>
         <p><a href="../index.html">Rueda Libre</a></p>
         <h1>Reserva tu bicicleta</h1>
     </header>
 
-    <main>
+    <main id="contenido-principal" tabindex="-1">
         <section aria-labelledby="formulario-reserva">
             <h2 id="formulario-reserva">Formulario de reserva</h2>
             <form action="reservas.html" method="post">

@@ -114,3 +114,59 @@ alterna la casilla de políticas y Enter no envía el formulario si falta un
 campo requerido. Se comprobó el recorrido inverso desde el botón hasta el
 grupo de bicicletas. La página sigue siendo estática y no procesa ni guarda
 reservas en un servidor.
+
+MiniReto 8: auditoria de accesibilidad y contraste
+
+Alcance: index.html, paginas/tarifas.html y paginas/reservas.html.
+Se revisaron alternativas de texto, estructura de encabezados, nombres de
+enlaces, idioma del documento y recorrido por teclado. Las tres paginas tienen
+lang="es"; las imagenes informativas tienen textos alternativos descriptivos
+(logo, bicicleta urbana y ruta ciclista), y la jerarquia de encabezados no
+salta niveles. Las tablas usan caption y encabezados de fila/columna. Los
+campos del formulario tienen etiquetas visibles y agrupaciones semanticas.
+
+Hallazgo | Correccion
+---------|-----------
+No habia un mecanismo para saltar la navegacion repetida. | Se agrego al inicio de cada pagina el enlace "Saltar al contenido principal", que lleva al main enfocable.
+La navegacion no identificaba cual pagina estaba activa. | Se agrego aria-current="page" al enlace actual del menu en cada pagina.
+El foco de teclado dependia del estilo predeterminado del navegador. | Se definio un contorno de foco visible, de 3 px y con separacion, para enlaces y controles.
+El enlace "Reservar ahora" no describia el objeto de la reserva cuando se escuchaba fuera de contexto. | Se cambio por "Reserva una bicicleta" en Inicio y Tarifas.
+El enlace al mapa abria una pestana nueva sin avisar. | El texto visible ahora indica que el mapa se abre en una pestana nueva.
+La posicion inicial del foco no permitia saltar al contenido principal. | Se asigno id y tabindex="-1" al elemento main de las tres paginas para que el destino del enlace de salto reciba el foco.
+
+Prueba de teclado: desde el inicio de cada pagina, Tab muestra primero el enlace
+de salto; Enter mueve el foco al contenido principal. Tab y Shift+Tab recorren
+los enlaces y controles en orden de lectura, y el contorno de foco permanece
+visible. En Reservas se puede recorrer y operar el formulario con teclado, usar
+las flechas para el grupo de opciones y activar la casilla con Espacio. No se
+usa tabindex positivo ni se depende de color como unico indicador.
+
+Mapa de uso de color
+
+Los contrastes se calcularon con la formula de luminancia relativa sRGB de
+WCAG. Para texto normal se exige 4.5:1 y para texto grande 3:1.
+
+Texto | Fondo | Contraste | Clasificacion
+------|-------|-----------|--------------
+Blanco (#FFFFFF) | Verde Ruta (#1E7A4F) | 5.31:1 | Apta para texto normal
+Blanco (#FFFFFF) | Naranja Pedal (#F39A2B) | 2.22:1 | No apta
+Azul Noche (#14213D) | Naranja Pedal (#F39A2B) | 7.20:1 | Apta para texto normal
+Azul Noche (#14213D) | Crema (#FAF6EF) | 14.83:1 | Apta para texto normal
+Gris Asfalto (#5B6470) | Crema (#FAF6EF) | 5.57:1 | Apta para texto normal
+Verde Ruta (#1E7A4F) | Crema (#FAF6EF) | 4.93:1 | Apta para texto normal
+Naranja Pedal (#F39A2B) | Crema (#FAF6EF) | 2.06:1 | No apta
+Blanco (#FFFFFF) | Azul Noche (#14213D) | 15.97:1 | Apta para texto normal
+
+Uso recomendado:
+- Fondos generales: Crema.
+- Texto principal y titulos: Azul Noche.
+- Texto secundario: Gris Asfalto sobre Crema.
+- Enlaces y botones principales: Verde Ruta con texto blanco; el contraste
+  supera 4.5:1.
+- Botones secundarios/destacados: Naranja Pedal con texto Azul Noche; no usar
+  texto blanco sobre naranja. No usar Naranja Pedal como texto sobre Crema.
+- El naranja sobre crema queda reservado a elementos decorativos no textuales
+  que no dependan solo del color para comunicar informacion.
+
+Publicacion: pendiente de habilitar/verificar GitHub Pages. URL publica:
+pendiente de confirmacion.

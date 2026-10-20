@@ -33,13 +33,33 @@
         a {
             color: #176b52;
         }
+
+        :focus-visible {
+            outline: 3px solid #14213d;
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 24px;
+            z-index: 1;
+            padding: 8px 12px;
+            background: #14213d;
+            color: #fff;
+        }
+
+        .skip-link:focus {
+            top: 24px;
+        }
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
     <header>
         <nav aria-label="Navegación principal">
             <ul>
-                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html" aria-current="page">Inicio</a></li>
                 <li><a href="paginas/tarifas.html">Tarifas y rutas</a></li>
                 <li><a href="paginas/reservas.html">Reservas</a></li>
             </ul>
@@ -48,7 +68,7 @@
         <img src="img/images.jpeg" alt="Logo de Rueda Libre" width="180">
     </header>
 
-    <main>
+    <main id="contenido-principal" tabindex="-1">
         <p>En Rueda Libre estamos al servicio de quienes quieren descubrir Medellín sobre dos ruedas. <a href="#encuentranos">Encuentra nuestro punto de alquiler.</a></p>
 
         <section aria-labelledby="quienes-somos">
@@ -91,11 +111,11 @@
 
         <section id="encuentranos" aria-labelledby="encuentranos-titulo">
             <h2 id="encuentranos-titulo">Encuéntranos</h2>
-            <p>Estamos en Medellín. <a href="https://www.google.com/maps/search/?api=1&amp;query=Medell%C3%ADn%2C+Colombia" target="_blank" rel="noopener noreferrer">Mira nuestra ubicación en el mapa</a>.</p>
+            <p>Estamos en Medellín. <a href="https://www.google.com/maps/search/?api=1&amp;query=Medell%C3%ADn%2C+Colombia" target="_blank" rel="noopener noreferrer">Mira nuestra ubicación en el mapa (se abre en una pestaña nueva)</a>.</p>
             <p>¿Tienes alguna pregunta? <a href="mailto:hola@ruedalibre.gmail.com">Escríbenos a hola@ruedalibre.gmail.com</a>.</p>
         </section>
 
-        <p><a href="paginas/reservas.html">Reservar ahora</a></p>
+        <p><a href="paginas/reservas.html">Reserva una bicicleta</a></p>
     </main>
 
     <footer>
