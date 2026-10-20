@@ -47,14 +47,34 @@
         a {
             color: #176b52;
         }
+
+        :focus-visible {
+            outline: 3px solid #14213d;
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 24px;
+            z-index: 1;
+            padding: 8px 12px;
+            background: #14213d;
+            color: #fff;
+        }
+
+        .skip-link:focus {
+            top: 24px;
+        }
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
     <header>
         <nav aria-label="Navegación principal">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="tarifas.html">Tarifas y rutas</a></li>
+                <li><a href="tarifas.html" aria-current="page">Tarifas y rutas</a></li>
                 <li><a href="reservas.html">Reservas</a></li>
             </ul>
         </nav>
@@ -64,7 +84,7 @@
         <h1>Tarifas y recorridos</h1>
     </header>
 
-    <main>
+    <main id="contenido-principal" tabindex="-1">
         <section aria-labelledby="tarifas-alquiler">
             <h2 id="tarifas-alquiler">Tarifas de alquiler</h2>
             <table>
@@ -98,7 +118,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p><a href="reservas.html">Reservar ahora</a></p>
+            <p><a href="reservas.html">Reserva una bicicleta</a></p>
         </section>
 
         <section id="recorridos-guiados" aria-labelledby="titulo-recorridos">
