@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Alquiler de bicicletas y rutas para descubrir Medellín con Rueda Libre.">
     <title>Rueda Libre | Alquiler de bicicletas en Medellín</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
     <header>
         <nav aria-label="Navegación principal">
-            <ul>
-                <li><a href="index.html" aria-current="page">Inicio</a></li>
+            <a class="marca" href="index.html" aria-label="Rueda Libre, ir al inicio">
+                <img src="img/images.jpeg" alt="">
+            </a>
+            <ul id="menu">
+                <li><a class="activo" href="index.html" aria-current="page">Inicio</a></li>
                 <li><a href="paginas/tarifas.html">Tarifas y rutas</a></li>
                 <li><a href="paginas/reservas.html">Reservas</a></li>
             </ul>
         </nav>
         <h1>Rueda Libre</h1>
-        <img src="img/images.jpeg" alt="Logo de Rueda Libre" width="180">
     </header>
 
     <main id="contenido-principal" tabindex="-1">
@@ -68,7 +73,7 @@
             <p>¿Tienes alguna pregunta? <a href="mailto:hola@ruedalibre.gmail.com">Escríbenos a hola@ruedalibre.gmail.com</a>.</p>
         </section>
 
-        <p><a href="paginas/reservas.html">Reserva una bicicleta</a></p>
+        <p><a class="boton" href="paginas/reservas.html">Reservar ahora</a></p>
     </main>
 
     <footer>

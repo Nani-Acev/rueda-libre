@@ -5,21 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Consulta las tarifas de alquiler de bicicletas y los precios de recorridos guiados de Rueda Libre.">
     <title>Tarifas y recorridos | Rueda Libre</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
     <header>
         <nav aria-label="Navegación principal">
-            <ul>
+            <a class="marca" href="../index.html" aria-label="Rueda Libre, ir al inicio">
+                <img src="../img/images.jpeg" alt="">
+            </a>
+            <ul id="menu">
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="tarifas.html" aria-current="page">Tarifas y rutas</a></li>
+                <li><a class="activo" href="tarifas.html" aria-current="page">Tarifas y rutas</a></li>
                 <li><a href="reservas.html">Reservas</a></li>
             </ul>
         </nav>
-        <a href="../index.html" aria-label="Rueda Libre, volver al inicio">
-            <img src="../img/images.jpeg" alt="Logo de Rueda Libre" width="140">
-        </a>
         <h1>Tarifas y recorridos</h1>
     </header>
 
@@ -57,7 +60,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p><a href="reservas.html">Reserva una bicicleta</a></p>
+            <p><a class="boton" href="reservas.html">Reservar ahora</a></p>
         </section>
 
         <section id="recorridos-guiados" aria-labelledby="titulo-recorridos">
