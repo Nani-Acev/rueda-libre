@@ -170,3 +170,50 @@ Uso recomendado:
 
 Publicacion: pendiente de habilitar/verificar GitHub Pages. URL publica:
 pendiente de confirmacion.
+
+MiniReto 9: cascada, enlaces y foco
+
+En cada pagina, la lista de navegacion tiene id="menu" y el enlace actual
+recibe class="activo" y aria-current="page". En DevTools, la regla #menu a
+prevalecia sobre .activo para el color: su especificidad es (1, 0, 1)
+(un ID, cero clases y un elemento), mientras que .activo es (0, 1, 0)
+(cero ID, una clase y cero elementos). Por eso la declaracion de color de
+.activo aparecia tachada.
+
+Se conservaron las dos reglas y se resolvio el conflicto con #menu a.activo,
+cuya especificidad es (1, 1, 1); asi el enlace actual se distingue con verde,
+negrita y subrayado sin !important ni estilos en linea. El menu usa fondo
+crema para que el gris asfalto de #menu a tenga contraste suficiente. Los
+estados hover y focus usan texto azul noche sobre naranja pedal.
+
+Los enlaces "Reservar ahora" usan la clase .boton y tienen aspecto de boton,
+con fondo verde y texto blanco; al pasar el puntero o recibir foco cambian a
+fondo naranja y texto azul noche. Los campos del formulario muestran un
+contorno verde visible al recibir foco. Se conserva el contorno general para
+los demas elementos interactivos.
+
+Verificacion: con la pestaña Styles de DevTools se compararon las reglas de
+#menu a y .activo, la declaracion tachada y el selector de mayor especificidad.
+El boton :hov permite revisar hover y focus; en las tres paginas se verifico
+el recorrido por Tab y el indicador visible. Contrastes de texto pertinentes:
+gris asfalto sobre crema 5.57:1; verde ruta sobre crema 4.93:1; azul noche
+sobre naranja pedal 7.20:1; blanco sobre verde ruta 5.31:1.
+
+Estilos de marca y verificacion de herencia
+
+Se conecto css/styles.css a las tres paginas con rutas relativas. Las tres
+cargan Montserrat 700 y Open Sans 400/600 desde Google Fonts. Los colores se
+centralizaron en variables CSS, siguiendo el mapa aprobado: barra de
+navegacion Azul Noche, panel Crema con enlaces Gris Asfalto; Verde Ruta
+identifica la pagina activa y se usa para enlaces sobre Crema y botones con
+texto Blanco. Naranja Pedal con Azul Noche se reserva para estados hover y
+destacados.
+
+Verificacion de estilos computados en el navegador:
+- En el parrafo de index.html, tarifas.html y reservas.html, font-family es
+  Open Sans y color es Azul Noche, heredados de body.
+- background-color del parrafo es transparente (rgba(0, 0, 0, 0)); no hereda
+  el fondo Crema de body.
+- Los encabezados h1 muestran Montserrat con peso 700.
+- Se confirmo la carga de Montserrat 700 y Open Sans 400/600, y la hoja externa
+  de CSS en las tres paginas.
