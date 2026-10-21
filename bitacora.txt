@@ -189,8 +189,10 @@ estados hover y focus usan texto azul noche sobre naranja pedal.
 Los enlaces "Reservar ahora" usan la clase .boton y tienen aspecto de boton,
 con fondo verde y texto blanco; al pasar el puntero o recibir foco cambian a
 fondo naranja y texto azul noche. Los campos del formulario muestran un
-contorno verde visible al recibir foco. Se conserva el contorno general para
-los demas elementos interactivos.
+contorno verde visible al recibir foco.
+El contenedor .campo tambien recibe un contorno con :focus-within como respaldo
+para controles nativos, como la fecha, cuyo contorno puede variar segun el
+navegador. Se conserva el contorno general para los demas elementos interactivos.
 
 Verificacion: con la pestaña Styles de DevTools se compararon las reglas de
 #menu a y .activo, la declaracion tachada y el selector de mayor especificidad.
