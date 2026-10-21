@@ -21,7 +21,7 @@
 body {
     max-width: 900px;
     margin: 0 auto;
-    padding: var(--espacio-grande);
+    padding: 0 var(--espacio-grande) var(--espacio-grande);
     background-color: var(--crema);
     color: var(--azul-noche);
     font-family: var(--fuente-texto);
@@ -214,12 +214,6 @@ legend {
     margin-bottom: 16px;
 }
 
-.campo:focus-within {
-    border-radius: 4px;
-    outline: 3px solid var(--verde-ruta);
-    outline-offset: 3px;
-}
-
 .campo > label,
 .opcion label {
     display: block;
@@ -299,7 +293,7 @@ footer {
 
 @media (max-width: 600px) {
     body {
-        padding: var(--espacio-medio);
+        padding: 0 var(--espacio-medio) var(--espacio-medio);
     }
 
     header nav {
