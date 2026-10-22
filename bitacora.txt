@@ -219,3 +219,34 @@ Verificacion de estilos computados en el navegador:
 - Los encabezados h1 muestran Montserrat con peso 700.
 - Se confirmo la carga de Montserrat 700 y Open Sans 400/600, y la hoja externa
   de CSS en las tres paginas.
+
+Modelo de caja y espaciado
+
+Se aplico box-sizing: border-box a todos los elementos y pseudoelementos.
+El contenido principal tiene max-width: 60rem y margenes automaticos; en la
+portada de inicio usa min-height: 70vh. Los servicios ahora son tarjetas con
+relleno, borde, esquinas redondeadas y separacion de la escala de espaciado.
+Las imagenes ocupan el 100% del ancho interior de sus tarjetas. Las tablas
+tienen celdas con relleno y bordes; sus encabezados usan Azul Noche con texto
+Blanco para mantener el contraste. El formulario muestra las etiquetas encima
+de los campos, usa campos de ancho completo y un boton con mas relleno. El menu
+mantiene sus opciones en una fila.
+
+Medicion en DevTools (Computed), misma tarjeta con width: 100%, padding:
+1.5rem y border: 1px, en un viewport de 277px:
+- Antes, box-sizing: content-box: ancho total 295px.
+- Despues, box-sizing: border-box: ancho total 245px.
+- Diferencia: 50px; el relleno (48px) y los bordes (2px) quedan incluidos
+  dentro del ancho de la tarjeta con border-box.
+
+Verificacion computada en navegador:
+- Las tarjetas usan border-box y su imagen queda dentro del borde.
+- El main tiene max-width de 960px (60rem) y la portada min-height de 560px
+  (70vh) en viewport de 800px de alto.
+- Los encabezados de tabla muestran fondo Azul Noche, texto Blanco, relleno
+  de 8px y borde de 1px.
+- Las etiquetas de formulario son bloques, los controles ocupan el ancho de
+  sus grupos y el boton tiene 16px 24px de relleno.
+- Las opciones del menu permanecen en una fila.
+- En pantallas estrechas, las tablas ajustan sus columnas y no generan
+  desbordamiento horizontal de la pagina.
