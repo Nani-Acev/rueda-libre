@@ -36,10 +36,32 @@ main {
     width: 100%;
     max-width: 60rem;
     margin: 0 auto;
+    text-align: center;
+}
+
+main p,
+main li,
+main td,
+main th,
+main label,
+main legend,
+main dl,
+main dt,
+main dd,
+main form,
+main aside,
+main article,
+main table {
+    text-align: left;
+}
+
+main form {
+    display: block;
 }
 
 .inicio main {
     min-height: 70vh;
+    max-width: 70rem;
 }
 
 img {
@@ -66,6 +88,20 @@ h3 {
     font-family: var(--fuente-titulos);
     font-weight: 700;
     line-height: 1.2;
+}
+
+header h1,
+main h2 {
+    text-align: center;
+}
+
+header h1 {
+    margin: var(--espacio-extra-grande) auto;
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+main h2 {
+    margin-bottom: var(--espacio-grande);
 }
 
 a {
@@ -205,23 +241,97 @@ th {
 }
 
 #servicios article {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    margin-bottom: var(--espacio-medio);
+    margin: 0;
     padding: var(--espacio-grande);
-    border: 1px solid var(--gris-asfalto);
-    border-radius: 0.5rem;
+    border: 1px solid rgb(20 33 61 / 8%);
+    border-radius: 0.75rem;
+    background: var(--blanco);
+    box-shadow: 0 0.25rem 1rem rgb(20 33 61 / 8%);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+#servicios article:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.6rem 1.5rem rgb(20 33 61 / 14%);
 }
 
 #servicios article img {
     display: block;
     width: 100%;
-    height: auto;
+    max-width: 100%;
+    height: 13rem;
+    margin: auto 0 0;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+
+.inicio .presentacion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--espacio-extra-grande);
+    margin: 0 0 3rem;
+    padding: clamp(1.25rem, 4vw, 3rem);
+    border-radius: 1rem;
+    background: var(--blanco);
+    box-shadow: 0 0.5rem 1.75rem rgb(20 33 61 / 10%);
+    text-align: left;
+}
+
+.presentacion p {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.presentacion img {
+    width: 100%;
+    height: 19rem;
+    border-radius: 0.75rem;
+    object-fit: cover;
+}
+
+.enlace-secundario {
+    display: inline-block;
+    margin: var(--espacio-medio) 0 0 var(--espacio-medio);
+    font-weight: 600;
+}
+
+.quienes-somos {
+    padding: var(--espacio-grande);
+    border-radius: 0.75rem;
+    background: rgb(30 122 79 / 8%);
+}
+
+.quienes-somos ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--espacio-pequeno) var(--espacio-extra-grande);
+    padding-left: 1.25rem;
+}
+
+#servicios {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espacio-grande);
+}
+
+#servicios h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+}
+
+#servicios article h3 {
+    margin-top: 0;
 }
 
 #servicios .servicio-nuevo {
     position: relative;
     padding-top: 3.5rem;
+    background: rgb(30 122 79 / 8%);
 }
 
 .etiqueta-nuevo {
@@ -277,23 +387,32 @@ footer {
 /* Enlace flotante de atencion */
 .enlace-whatsapp {
     position: fixed;
-    right: var(--espacio-grande);
-    bottom: var(--espacio-grande);
+    display: grid;
+    place-items: center;
+    right: 1.25rem;
+    bottom: 1.25rem;
     z-index: 2;
-    padding: var(--espacio-medio) var(--espacio-grande);
-    border: 1px solid var(--blanco);
-    border-radius: 2rem;
-    background-color: var(--verde-ruta);
+    width: 3.75rem;
+    height: 3.75rem;
+    border: 2px solid var(--blanco);
+    border-radius: 50%;
+    background-color: #25D366;
     color: var(--blanco);
-    font-weight: 600;
     text-decoration: none;
-    box-shadow: 0 0.125rem 0.5rem rgb(20 33 61 / 25%);
+    box-shadow: 0 0.25rem 0.875rem rgb(20 33 61 / 25%);
+    transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.enlace-whatsapp svg {
+    width: 1.8rem;
+    height: 1.8rem;
 }
 
 .enlace-whatsapp:hover,
 .enlace-whatsapp:focus {
-    background-color: var(--naranja-pedal);
-    color: var(--azul-noche);
+    transform: scale(1.08);
+    background-color: #1fba59;
+    color: var(--blanco);
 }
 
 /* Formulario de reservas */
@@ -390,7 +509,27 @@ textarea:focus {
     }
 
     .enlace-whatsapp {
-        right: var(--espacio-medio);
-        bottom: var(--espacio-medio);
+        right: 1rem;
+        bottom: 1rem;
+    }
+
+    .inicio .presentacion {
+        grid-template-columns: 1fr;
+    }
+
+    .presentacion img {
+        height: 14rem;
+    }
+
+    #servicios {
+        grid-template-columns: 1fr;
+    }
+
+    #servicios h2 {
+        grid-column: auto;
+    }
+
+    .enlace-secundario {
+        margin-left: 0;
     }
 }
