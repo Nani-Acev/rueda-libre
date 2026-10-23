@@ -250,3 +250,89 @@ Verificacion computada en navegador:
 - Las opciones del menu permanecen en una fila.
 - En pantallas estrechas, las tablas ajustan sus columnas y no generan
   desbordamiento horizontal de la pagina.
++
++Cierre de la semana y resumen de MiniRetos
++
++Rueda Libre v1.0 integra los 12 mini retos en un sitio navegable, legible y
++publicado. Durante la semana construimos la base del repositorio y la vitrina
++de inicio (MiniReto 1 y 2), luego añadimos tarifas y rutas con estructura y
++relaciones claras (MiniReto 3), y consolidamos la navegacion para las tres
++paginas (MiniReto 4 y 5). El formulario de reservas se completó con reglas
++nativas, validación y recorrido por teclado (MiniRetos 6 y 7), y se cerró la
++fase de accesibilidad con contraste y foco visible (MiniReto 8).
++
++La identidad visual se consolidó con variables, tipografías, colores y estados
++de interacción (MiniRetos 9 y 10). El modelo de caja fue el eje del orden
++visual: tarjetas, tablas, formulario y contenedor principal quedaron con
++espaciado y ancho controlado (MiniReto 11). Para cerrar la entrega, se aplicó
++el posicionamiento final con la etiqueta "Nuevo" sobre la tarjeta de bicicletas
++eléctricas y el botón fijo de WhatsApp, además de revisar el sitio en DevTools
++y con teclado antes del lanzamiento (MiniReto 12).
++
++Lo que mejoraría en una próxima iteración: añadir una API real de reservas,
++mostrar un mapa embebido, mejorar la experiencia del formulario con mensajes
++de éxito y gestionar la publicación desde un flujo de despliegue con credenciales
++de GitHub y una release formal. La URL verificada de GitHub Pages del sitio es:
++https://nani-acev.github.io/rueda-libre/
+
+MiniReto 12: lanzamiento Rueda Libre v1.0
+
+Resumen de construccion de la semana
+
+1. Kilometro 0: se preparo el repositorio, la estructura de carpetas, el
+   documento base de inicio y esta bitacora.
+2. La vitrina: se organizo el contenido de inicio con informacion del negocio,
+   servicios, listas, imagenes y enlaces.
+3. Tarifas claras: se crearon las tablas de alquiler y recorridos y se
+   conectaron las paginas con rutas relativas.
+4. Sitio navegable v0.1: se incorporaron reservas, menu entre las paginas y
+   pies de pagina compartidos.
+5. Estructura con significado: las tres paginas se ordenaron con regiones
+   semanticas y jerarquia de encabezados.
+6. Formulario: se agregaron datos del cliente, seleccion del alquiler y
+   confirmacion con controles etiquetados y agrupados.
+7. Validacion y teclado: se configuraron restricciones nativas y se probaron
+   los limites de los campos, el foco y la navegacion por teclado.
+8. Accesibilidad y publicacion inicial: se revisaron alternativas, tablas,
+   enlace para saltar al contenido, foco visible y contraste de la paleta.
+9. Identidad visual: se centralizaron colores, tipografias y espaciado en
+   variables, y se conecto la hoja externa a las tres paginas.
+10. Navegacion e interaccion: se estandarizaron estados activo, hover y foco
+    para menu, enlaces y botones, manteniendo visible la pagina actual.
+11. Modelo de caja: se aplico border-box; se ordenaron contenedor, tarjetas,
+    tablas y formulario. La tarjeta paso de 295px con content-box a 245px con
+    border-box en la medicion registrada arriba.
+12. Lanzamiento: se agrego una tarjeta de bicicletas electricas con etiqueta
+    posicionada "Nuevo", el acceso fijo a WhatsApp, una hoja CSS organizada
+    por secciones y la verificacion final de las tres paginas.
+
+Pruebas finales y decisiones
+
+- La etiqueta Nuevo usa posicion relativa en la tarjeta y posicion absoluta
+  en la esquina superior derecha; no participa en el flujo del contenido.
+- WhatsApp aparece como enlace visible, enfocable y fijo en la esquina
+  inferior derecha en las tres paginas. Abre https://wa.me/573000000000 en otra
+  pestana. El espacio inferior del documento evita que cubra el pie.
+- En viewport movil de 360px, las tres paginas no presentan desbordamiento
+  horizontal; las imagenes locales cargaron correctamente.
+- Se recorrio la navegacion de inicio con Tab desde el enlace para saltar al
+  contenido. El formulario conserva validacion nativa y los campos empiezan
+  invalidos mientras faltan datos requeridos.
+- En las paginas locales no se detectaron respuestas de error ni solicitudes
+  fallidas durante la comprobacion del navegador. La web publica ya tenia
+  activo el despliegue de GitHub Pages y se comprobo la URL del proyecto.
+- Encabezado, menu, botones y pie comparten la misma hoja de estilos. El menu
+  conserva el indicador de pagina activa; los textos de cada pagina siguen
+  siendo propios de su contenido.
+
+Cierre y mejoras siguientes
+
+URL de GitHub Pages: https://nani-acev.github.io/rueda-libre/
+Version: v1.0.
+
+El formulario es estatico: valida los datos en el navegador, pero todavia no
+guarda ni envia reservas a un servicio. Como siguiente mejora integraria un
+backend seguro de reservas, confirmacion al cliente y disponibilidad real.
+Tambien confirmaria que el numero de WhatsApp sea el canal definitivo,
+probaria el sitio en dispositivos reales y mantendria al dia las tarifas,
+fechas y textos de servicio.

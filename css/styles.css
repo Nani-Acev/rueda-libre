@@ -1,3 +1,4 @@
+/* Variables de marca y espaciado */
 :root {
     color-scheme: light;
     --verde-ruta: #1E7A4F;
@@ -14,6 +15,7 @@
     --espacio-extra-grande: 2rem;
 }
 
+/* Base y estructura */
 *,
 *::before,
 *::after {
@@ -22,7 +24,7 @@
 
 body {
     margin: 0 auto;
-    padding: 0 var(--espacio-grande) var(--espacio-grande);
+    padding: 0 var(--espacio-grande) calc(var(--espacio-extra-grande) + 4rem);
     background-color: var(--crema);
     color: var(--azul-noche);
     font-family: var(--fuente-texto);
@@ -60,13 +62,54 @@ header img {
 h1,
 h2,
 h3 {
+    color: var(--azul-noche);
     font-family: var(--fuente-titulos);
     font-weight: 700;
-    color: var(--azul-noche);
     line-height: 1.2;
 }
 
+a {
+    color: var(--verde-ruta);
+    text-decoration-color: var(--verde-ruta);
+    text-underline-offset: 0.15em;
+}
+
+a:hover {
+    color: var(--azul-noche);
+}
+
+:focus-visible,
+#menu a:focus,
+.boton:focus,
+button:focus {
+    outline: 0.1875rem solid var(--verde-ruta);
+    outline-offset: 0.1875rem;
+}
+
+.skip-link {
+    position: absolute;
+    top: -6.25rem;
+    left: 1.5rem;
+    z-index: 1;
+    padding: var(--espacio-pequeno) var(--espacio-medio);
+    background-color: var(--azul-noche);
+    color: var(--blanco);
+}
+
+.skip-link:focus {
+    top: 1.5rem;
+}
+
+strong,
+mark {
+    padding: 0 0.15em;
+    background-color: var(--naranja-pedal);
+    color: var(--azul-noche);
+}
+
+/* Navegacion compartida */
 header nav {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,7 +118,6 @@ header nav {
     margin: 0 0 var(--espacio-grande) -1.5rem;
     padding: var(--espacio-medio) max(1.5rem, calc((100vw - 60rem) / 2));
     background-color: var(--azul-noche);
-    position: relative;
 }
 
 header nav .marca {
@@ -120,11 +162,6 @@ header nav ul {
     text-decoration: none;
 }
 
-.activo {
-    color: var(--verde-ruta);
-    font-weight: 600;
-}
-
 #menu a.activo {
     color: var(--verde-ruta);
     text-decoration: underline;
@@ -140,49 +177,7 @@ header nav ul {
     text-underline-offset: 0.2em;
 }
 
-a {
-    color: var(--verde-ruta);
-    text-decoration-color: var(--verde-ruta);
-    text-underline-offset: 0.15em;
-}
-
-a:hover {
-    color: var(--azul-noche);
-}
-
-:focus-visible {
-    outline: 0.1875rem solid var(--verde-ruta);
-    outline-offset: 0.1875rem;
-}
-
-#menu a:focus,
-.boton:focus,
-button:focus {
-    outline: 0.1875rem solid var(--verde-ruta);
-    outline-offset: 0.1875rem;
-}
-
-.skip-link {
-    position: absolute;
-    top: -6.25rem;
-    left: 1.5rem;
-    z-index: 1;
-    padding: var(--espacio-pequeno) var(--espacio-medio);
-    background-color: var(--azul-noche);
-    color: var(--blanco);
-}
-
-.skip-link:focus {
-    top: 1.5rem;
-}
-
-strong,
-mark {
-    padding: 0 0.15em;
-    background-color: var(--naranja-pedal);
-    color: var(--azul-noche);
-}
-
+/* Componentes compartidos */
 table {
     width: 100%;
     margin: var(--espacio-medio) 0 var(--espacio-extra-grande);
@@ -209,6 +204,99 @@ th {
     color: var(--blanco);
 }
 
+#servicios article {
+    display: block;
+    width: 100%;
+    margin-bottom: var(--espacio-medio);
+    padding: var(--espacio-grande);
+    border: 1px solid var(--gris-asfalto);
+    border-radius: 0.5rem;
+}
+
+#servicios article img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#servicios .servicio-nuevo {
+    position: relative;
+    padding-top: 3.5rem;
+}
+
+.etiqueta-nuevo {
+    position: absolute;
+    top: var(--espacio-medio);
+    right: var(--espacio-medio);
+    padding: 0.25rem var(--espacio-pequeno);
+    border-radius: 0.25rem;
+    background-color: var(--naranja-pedal);
+    color: var(--azul-noche);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.boton,
+button {
+    display: inline-block;
+    padding: var(--espacio-medio) var(--espacio-grande);
+    border: 0;
+    border-radius: 0.25rem;
+    background-color: var(--verde-ruta);
+    color: var(--blanco);
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+.boton:hover,
+.boton:focus,
+button:hover,
+button:focus {
+    background-color: var(--naranja-pedal);
+    color: var(--azul-noche);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+small,
+dt,
+footer {
+    color: var(--gris-asfalto);
+}
+
+footer {
+    padding-top: var(--espacio-medio);
+    border-top: 1px solid var(--gris-asfalto);
+}
+
+/* Enlace flotante de atencion */
+.enlace-whatsapp {
+    position: fixed;
+    right: var(--espacio-grande);
+    bottom: var(--espacio-grande);
+    z-index: 2;
+    padding: var(--espacio-medio) var(--espacio-grande);
+    border: 1px solid var(--blanco);
+    border-radius: 2rem;
+    background-color: var(--verde-ruta);
+    color: var(--blanco);
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 0.125rem 0.5rem rgb(20 33 61 / 25%);
+}
+
+.enlace-whatsapp:hover,
+.enlace-whatsapp:focus {
+    background-color: var(--naranja-pedal);
+    color: var(--azul-noche);
+}
+
+/* Formulario de reservas */
 fieldset {
     margin: 0 0 var(--espacio-grande);
     padding: var(--espacio-medio);
@@ -235,10 +323,7 @@ legend {
     gap: var(--espacio-pequeno);
 }
 
-.opcion label {
-    display: inline-block;
-}
-
+.opcion label,
 .campo > input[type="checkbox"] + label {
     display: inline-block;
 }
@@ -269,55 +354,11 @@ textarea:focus {
     outline-offset: 0.125rem;
 }
 
-.boton {
-    display: inline-block;
-    padding: var(--espacio-medio) var(--espacio-grande);
-    border-radius: 0.25rem;
-    background-color: var(--verde-ruta);
-    color: var(--blanco);
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.boton:hover,
-.boton:focus {
-    background-color: var(--naranja-pedal);
-    color: var(--azul-noche);
-    text-decoration: underline;
-    text-underline-offset: 0.15em;
-}
-
-button {
-    padding: var(--espacio-medio) var(--espacio-grande);
-    border: 0;
-    border-radius: 0.25rem;
-    background-color: var(--verde-ruta);
-    color: var(--blanco);
-    font: inherit;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-button:hover,
-button:focus {
-    background-color: var(--naranja-pedal);
-    color: var(--azul-noche);
-}
-
-small,
-dt,
-footer {
-    color: var(--gris-asfalto);
-}
-
-footer {
-    padding-top: var(--espacio-medio);
-    border-top: 1px solid var(--gris-asfalto);
-}
-
+/* Ajustes para pantallas estrechas */
 @media (max-width: 37.5rem) {
     body {
-        padding: 0 var(--espacio-medio) var(--espacio-medio);
+        padding-right: var(--espacio-medio);
+        padding-left: var(--espacio-medio);
     }
 
     header nav {
@@ -329,19 +370,17 @@ footer {
     }
 
     header nav ul {
-        flex-wrap: nowrap;
         gap: var(--espacio-pequeno) var(--espacio-medio);
-        margin: 0;
     }
 
     header nav .marca {
-        left: 1rem;
         top: 0.5625rem;
+        left: 1rem;
     }
 
     table {
-        font-size: 0.9rem;
         table-layout: fixed;
+        font-size: 0.9rem;
     }
 
     th,
@@ -349,19 +388,9 @@ footer {
         padding: var(--espacio-pequeno);
         overflow-wrap: anywhere;
     }
-}
 
-#servicios article {
-    display: block;
-    width: 100%;
-    margin-bottom: var(--espacio-medio);
-    padding: var(--espacio-grande);
-    border: 1px solid var(--gris-asfalto);
-    border-radius: 0.5rem;
-}
-
-#servicios article img {
-    display: block;
-    width: 100%;
-    height: auto;
+    .enlace-whatsapp {
+        right: var(--espacio-medio);
+        bottom: var(--espacio-medio);
+    }
 }
