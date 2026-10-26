@@ -336,3 +336,18 @@ backend seguro de reservas, confirmacion al cliente y disponibilidad real.
 Tambien confirmaria que el numero de WhatsApp sea el canal definitivo,
 probaria el sitio en dispositivos reales y mantendria al dia las tarifas,
 fechas y textos de servicio.
+
+MiniReto 9: distribucion con Flexbox
+
+En el encabezado, el nombre del negocio acompana al logo a la izquierda y el
+menu queda al extremo derecho, centrado verticalmente. La lista usa Flexbox,
+gap para separar los enlaces y flex-wrap para que puedan pasar a otra linea.
+En el pie, marca, contacto y horario forman tres bloques en fila, alineados
+por arriba y separados uniformemente.
+
+Prueba al estrechar poco a poco la ventana: en pantallas anchas el encabezado
+mantiene la marca y el menu en extremos opuestos y el pie conserva sus tres
+bloques en fila. Cuando el ancho deja de alcanzar, los enlaces del menu bajan
+a otra linea; al reducir mas la ventana, la marca queda en su propia linea y
+el pie cambia a una columna en pantallas estrechas. El contenido se adapta
+sin desbordarse.
