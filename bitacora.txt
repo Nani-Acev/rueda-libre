@@ -370,3 +370,19 @@ Ancho | Columnas visibles
 
 Agregué Tándem como séptimo modelo y comprobé que se acomoda en la cuadrícula
 sin cambiar las reglas CSS.
+
+MiniReto 11: elegir Grid o Flexbox para los layouts
+
+- Portada (inicio): Grid en dos columnas con unidades fr para ubicar texto e
+  imagen en dos dimensiones; align-items centra el contenido verticalmente.
+- Galería "Nuestras rutas": Grid con repeat() y tres columnas porque organiza
+  tarjetas tanto en filas como en columnas, manteniendo el espacio entre ellas.
+- Reservas: Grid con columnas 2fr y 1fr para distribuir el formulario y el
+  bloque de contacto/horario en la proporción del boceto; en móvil pasa a una.
+- Fila del formulario: Grid con dos columnas iguales para alinear documento y
+  celular en una fila; en pantallas estrechas se apilan.
+- Encabezado: Flexbox porque marca y menú se distribuyen en una sola dimensión,
+  con align-items para centrarlos verticalmente y justify-content para
+  separarlos.
+- Pie: Flexbox porque sus bloques se distribuyen en una dimensión; gap y
+  justify-content los separan y align-items los alinea por arriba.
