@@ -351,3 +351,22 @@ bloques en fila. Cuando el ancho deja de alcanzar, los enlaces del menu bajan
 a otra linea; al reducir mas la ventana, la marca queda en su propia linea y
 el pie cambia a una columna en pantallas estrechas. El contenido se adapta
 sin desbordarse.
+
+MiniReto 10: cuadricula adaptable para la flota
+
+En inicio agregue siete tarjetas para la flota. La cuadrícula usa Grid con
+auto-fit y minmax, de modo que agrega o quita columnas según el ancho sin
+necesitar media queries. Cada tarjeta usa Flexbox en columna y conserva
+relleno, borde y esquinas redondeadas; el enlace "Reservar" queda al final,
+alineado con los de las otras tarjetas de su fila.
+
+Prueba en modo dispositivo de DevTools (ancho del viewport):
+
+Ancho | Columnas visibles
+------|------------------
+1280 px | 4
+900 px  | 3
+500 px  | 1
+
+Agregué Tándem como séptimo modelo y comprobé que se acomoda en la cuadrícula
+sin cambiar las reglas CSS.
