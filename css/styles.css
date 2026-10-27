@@ -675,18 +675,21 @@ textarea:focus {
     }
 
     header nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
         gap: var(--espacio-grande);
         width: calc(100% + 3rem);
         margin-left: -1.5rem;
         padding: var(--espacio-medio) max(1.5rem, calc((100vw - 60rem) / 2));
     }
 
+    header nav .marca {
+        grid-column: 1;
+    }
+
     header nav ul {
-        flex: 0 1 auto;
-        justify-content: flex-end;
+        grid-column: 2;
+        justify-content: center;
         gap: var(--espacio-pequeno) var(--espacio-grande);
         width: auto;
     }
