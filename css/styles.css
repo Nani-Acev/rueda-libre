@@ -24,7 +24,7 @@
 
 body {
     margin: 0 auto;
-    padding: 0 var(--espacio-grande) calc(var(--espacio-extra-grande) + 4rem);
+    padding: 0 var(--espacio-medio) calc(var(--espacio-extra-grande) + 4rem);
     background-color: var(--crema);
     color: var(--azul-noche);
     font-family: var(--fuente-texto);
@@ -65,6 +65,7 @@ main form {
 }
 
 img {
+    display: block;
     max-width: 100%;
     height: auto;
 }
@@ -147,13 +148,13 @@ mark {
 header nav {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--espacio-grande);
-    width: calc(100% + 3rem);
-    margin: 0 0 var(--espacio-grande) -1.5rem;
-    padding: var(--espacio-medio) max(1.5rem, calc((100vw - 60rem) / 2));
+    justify-content: center;
+    gap: var(--espacio-medio);
+    width: calc(100% + 2rem);
+    margin: 0 0 var(--espacio-grande) -1rem;
+    padding: 0.875rem 1rem;
     background-color: var(--azul-noche);
 }
 
@@ -179,10 +180,10 @@ header nav .marca img {
 
 header nav ul {
     display: flex;
-    flex: 0 1 auto;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: var(--espacio-pequeno) var(--espacio-grande);
+    justify-content: center;
+    gap: var(--espacio-pequeno);
+    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -222,6 +223,60 @@ table {
     width: 100%;
     margin: var(--espacio-medio) 0 var(--espacio-extra-grande);
     border-collapse: collapse;
+}
+
+.tabla-responsiva {
+    display: block;
+    table-layout: auto;
+}
+
+.tabla-responsiva caption {
+    display: block;
+    width: 100%;
+}
+
+.tabla-responsiva thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+.tabla-responsiva tbody {
+    display: grid;
+    gap: var(--espacio-medio);
+}
+
+.tabla-responsiva tr {
+    display: grid;
+    border: 1px solid var(--gris-asfalto);
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.tabla-responsiva th[scope="row"],
+.tabla-responsiva td {
+    display: grid;
+    grid-template-columns: minmax(6.5rem, 0.85fr) minmax(0, 1.15fr);
+    gap: var(--espacio-pequeno);
+    border: 0;
+    border-top: 1px solid var(--gris-asfalto);
+    padding: var(--espacio-pequeno);
+    overflow-wrap: anywhere;
+}
+
+.tabla-responsiva tr > :first-child {
+    border-top: 0;
+}
+
+.tabla-responsiva th[scope="row"]::before,
+.tabla-responsiva td::before {
+    content: attr(data-label);
+    font-weight: 600;
 }
 
 caption {
@@ -274,11 +329,11 @@ th {
 
 .inicio .presentacion {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    gap: var(--espacio-extra-grande);
+    gap: var(--espacio-grande);
     margin: 0 0 3rem;
-    padding: clamp(1.25rem, 4vw, 3rem);
+    padding: var(--espacio-grande);
     border-radius: 1rem;
     background: var(--blanco);
     box-shadow: 0 0.5rem 1.75rem rgb(20 33 61 / 10%);
@@ -298,8 +353,8 @@ th {
 
 .galeria-rutas {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--espacio-grande);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--espacio-medio);
 }
 
 .tarjeta-ruta {
@@ -329,7 +384,7 @@ th {
 
 .presentacion img {
     width: 100%;
-    height: 19rem;
+    height: 14rem;
     border-radius: 0.75rem;
     object-fit: cover;
 }
@@ -342,16 +397,16 @@ th {
 
 .reservas-layout {
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
-    gap: var(--espacio-extra-grande);
+    gap: var(--espacio-grande);
     max-width: 70rem;
 }
 
 .campos-cortos {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--espacio-medio);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
 }
 
 .campos-cortos .campo {
@@ -389,8 +444,8 @@ th {
 
 #servicios {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--espacio-grande);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--espacio-medio);
 }
 
 #servicios h2 {
@@ -502,9 +557,8 @@ footer {
 
 footer {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
     gap: var(--espacio-grande);
     padding-top: var(--espacio-medio);
@@ -512,7 +566,7 @@ footer {
 }
 
 .bloque-pie {
-    flex: 1 1 12rem;
+    flex: 0 1 auto;
     margin: 0;
 }
 
@@ -614,77 +668,141 @@ textarea:focus {
     outline-offset: 0.125rem;
 }
 
-/* Ajustes para pantallas estrechas */
-@media (max-width: 37.5rem) {
+@media (min-width: 48rem) {
     body {
-        padding-right: var(--espacio-medio);
-        padding-left: var(--espacio-medio);
+        padding-right: var(--espacio-grande);
+        padding-left: var(--espacio-grande);
     }
 
     header nav {
-        width: calc(100% + 2rem);
-        margin-left: -1rem;
-        gap: var(--espacio-medio);
-        padding: 0.875rem 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: var(--espacio-grande);
+        width: calc(100% + 3rem);
+        margin-left: -1.5rem;
+        padding: var(--espacio-medio) max(1.5rem, calc((100vw - 60rem) / 2));
     }
 
     header nav ul {
-        flex: 1 1 15rem;
-        gap: var(--espacio-pequeno) var(--espacio-medio);
+        flex: 0 1 auto;
+        justify-content: flex-end;
+        gap: var(--espacio-pequeno) var(--espacio-grande);
+        width: auto;
     }
 
     footer {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .bloque-pie {
-        flex-basis: auto;
+        flex: 1 1 12rem;
     }
 
-    table {
+    .tabla-responsiva {
+        display: table;
         table-layout: fixed;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
     }
 
-    th,
-    td {
-        padding: var(--espacio-pequeno);
-        overflow-wrap: anywhere;
+    .tabla-responsiva caption {
+        display: table-caption;
+        width: auto;
     }
 
-    .enlace-whatsapp {
-        right: 1rem;
-        bottom: 1rem;
+    .tabla-responsiva thead {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+        clip-path: none;
+    }
+
+    .tabla-responsiva tbody {
+        display: table-row-group;
+    }
+
+    .tabla-responsiva tr {
+        display: table-row;
+        border: 0;
+        border-radius: 0;
+        overflow: visible;
+    }
+
+    .tabla-responsiva th[scope="row"],
+    .tabla-responsiva td {
+        display: table-cell;
+        padding: 0.375rem;
+        overflow-wrap: normal;
+    }
+
+    .tabla-responsiva th[scope="row"]::before,
+    .tabla-responsiva td::before {
+        content: none;
     }
 
     .inicio .presentacion {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        padding: clamp(1.25rem, 4vw, 3rem);
     }
 
-    .galeria-rutas,
-    .reservas-layout,
-    .campos-cortos {
-        grid-template-columns: 1fr;
+    .galeria-rutas {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--espacio-grande);
     }
 
     .reservas-layout {
-        gap: 0;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        gap: var(--espacio-extra-grande);
     }
 
-    .presentacion img {
-        height: 14rem;
+    .campos-cortos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--espacio-medio);
     }
 
     #servicios {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--espacio-grande);
     }
 
     #servicios h2 {
-        grid-column: auto;
+        grid-column: 1 / -1;
+    }
+
+    .presentacion img {
+        height: 19rem;
     }
 
     .enlace-secundario {
         margin-left: 0;
+    }
+}
+
+@media (min-width: 75rem) {
+    body {
+        padding-right: var(--espacio-extra-grande);
+        padding-left: var(--espacio-extra-grande);
+    }
+
+    header nav {
+        width: calc(100% + 4rem);
+        margin-left: -2rem;
+        padding-right: max(2rem, calc((100vw - 75rem) / 2));
+        padding-left: max(2rem, calc((100vw - 75rem) / 2));
+    }
+
+    main,
+    .inicio main,
+    .reservas-layout {
+        max-width: 75rem;
+    }
+
+    .inicio .presentacion {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
     }
 }
