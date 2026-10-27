@@ -386,3 +386,32 @@ MiniReto 11: elegir Grid o Flexbox para los layouts
   separarlos.
 - Pie: Flexbox porque sus bloques se distribuyen en una dimensión; gap y
   justify-content los separan y align-items los alinea por arriba.
+
+MiniReto 12: estilos mobile-first y pruebas responsive
+
+Los estilos base describen la vista móvil en una columna; los layouts de
+portada, rutas, reservas, encabezado y pie cambian desde 768 px. A partir de
+1200 px se amplía el espacio de contenido y la portada da más ancho a la
+imagen. Las imágenes son fluidas y no superan el ancho de su contenedor.
+
+Problemas encontrados en las pruebas y soluciones:
+- En 360 px los enlaces del menú ocupaban dos filas bajo la marca; reduje la
+  separación entre enlaces para que quepan en una, y mantuve marca arriba y
+  menú centrado debajo. Desde 768 px se distribuyen en una fila horizontal.
+- La galería de tres rutas y las columnas 2:1 de reservas apretaban el
+  contenido móvil; ahora comienzan en una columna y pasan a Grid desde tablet.
+- Las tablas de tarifas, especialmente la de cinco columnas, desbordaban o
+  reducían demasiado sus textos, y el título de la tabla quedaba angosto al
+  cambiar su presentación; en móvil cada fila se presenta como ficha, el
+  título ocupa el ancho completo y desde 768 px vuelve la tabla tradicional.
+
+Pruebas con modo dispositivo de DevTools:
+- 360 px: portada, rutas, reservas y formulario en una columna; tablas en
+  fichas; no hay desbordamiento horizontal.
+- 768 px: encabezado y pie en fila, portada en dos columnas, rutas en tres,
+  reservas en proporción 2:1 y tablas tradicionales.
+- 1280 px: mismos layouts de escritorio con contenido más ancho y portada
+  equilibrada hacia la imagen; no hay imágenes fuera de sus contenedores.
+
+Versión objetivo: v1.5. URL de GitHub Pages:
+https://nani-acev.github.io/rueda-libre/
