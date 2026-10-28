@@ -1,4 +1,4 @@
-/* Variables de marca y espaciado */
+
 :root {
     color-scheme: light;
     --verde-ruta: #1E7A4F;
@@ -15,7 +15,7 @@
     --espacio-extra-grande: 2rem;
 }
 
-/* Base y estructura */
+
 *,
 *::before,
 *::after {
@@ -579,7 +579,7 @@ footer {
     margin: 0;
 }
 
-/* Enlace flotante de atencion */
+
 .enlace-whatsapp {
     position: fixed;
     display: grid;
@@ -610,7 +610,6 @@ footer {
     color: var(--blanco);
 }
 
-/* Formulario de reservas */
 fieldset {
     margin: 0 0 var(--espacio-grande);
     padding: var(--espacio-medio);
