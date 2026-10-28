@@ -438,3 +438,28 @@ las imágenes ya no tienen una altura uniforme de 12 rem ni el recorte
 object-fit: cover de la versión original. El HTML también queda acoplado a
 las clases y los valores predeterminados de Bootstrap, y la hoja depende de
 la disponibilidad del CDN.
+
+MiniReto: beneficios y llamada a la acción con utilidades Bootstrap
+
+Consulté la documentación oficial de Bootstrap 5.3:
+- gap-4: deja un espacio de 1.5 rem entre elementos de una grilla o flexbox.
+  https://getbootstrap.com/docs/5.3/utilities/spacing/
+- fs-5: cambia el tamaño de letra al tamaño de un encabezado h5, sin cambiar
+  por sí solo el peso ni la altura de línea.
+  https://getbootstrap.com/docs/5.3/utilities/text/
+- text-bg-success: aplica el fondo de tema success y un color de texto
+  contrastante para esa combinación.
+  https://getbootstrap.com/docs/5.3/utilities/colors/
+- d-none: oculta el elemento en todos los anchos; combinado con d-md-block,
+  permite mostrar la imagen desde el breakpoint md.
+  https://getbootstrap.com/docs/5.3/utilities/display/
+- flex-md-row: desde md distribuye los elementos flex en fila; se combina con
+  flex-column para mantenerlos apilados en celulares.
+  https://getbootstrap.com/docs/5.3/utilities/flex/
+
+Los beneficios usan cuatro columnas desde xl y se apilan de forma responsive.
+La franja pasa de columna a fila desde md, y la imagen decorativa solo aparece
+desde ese breakpoint. El verde success y el fondo warning con texto oscuro
+siguen la intención de color y contraste del mapa de la marca; son los tonos
+de Bootstrap, no una reproducción exacta de los colores de marca, porque esta
+prueba no agrega CSS propio.
