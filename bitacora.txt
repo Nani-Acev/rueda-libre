@@ -415,3 +415,26 @@ Pruebas con modo dispositivo de DevTools:
 
 Versión objetivo: v1.5. URL de GitHub Pages:
 https://nani-acev.github.io/rueda-libre/
+
+Prueba comparativa: catálogo de flota con Bootstrap 5.3
+
+Tiempo invertido: 1 minuto y 55 segundos, medidos desde el inicio del
+cronómetro hasta terminar la implementación y la comprobación responsive.
+
+La versión propia resuelve la distribución de la flota en 5 líneas de CSS:
+el bloque #flota define Grid, columnas auto-fit/minmax y el espacio entre
+tarjetas. En esta prueba no agregué CSS propio: la grilla utiliza 7 clases
+distintas (container, row, g-4, col-12, col-sm-6, col-lg-4 y col-xl-3),
+con 31 usos en total al contar las clases repetidas en las siete tarjetas.
+
+Bootstrap resolvió sin escribir reglas de distribución el contenedor
+centrado, los gutters y el cambio responsive de una columna a dos, tres y
+cuatro. También reutilicé sus clases de tarjetas y botones. En la prueba con
+viewport de 375, 768, 1024 y 1280 px se observaron respectivamente 1, 2, 3 y
+4 columnas; los archivos CSS y JavaScript del CDN respondieron con estado 200.
+
+El control perdido es el ajuste visual fino desde CSS propio: por ejemplo,
+las imágenes ya no tienen una altura uniforme de 12 rem ni el recorte
+object-fit: cover de la versión original. El HTML también queda acoplado a
+las clases y los valores predeterminados de Bootstrap, y la hoja depende de
+la disponibilidad del CDN.
