@@ -577,6 +577,16 @@ Actualización de navegación y llamadas a la acción:
   enlaces se muestran desde 992 px. El menú responde a clic de mouse y
   navegación por teclado en viewport móvil.
 
+MiniReto 11 - Validación, alerta y políticas:
+- El formulario de reservas utiliza needs-validation y novalidate con el script
+  oficial de validación de Bootstrap, manteniendo required, minlength,
+  maxlength, pattern, min, max y step para la validación del navegador.
+- Cada campo obligatorio presenta invalid-feedback con indicaciones concretas;
+  la alerta descartable recuerda llevar el documento original.
+- El modal accesible presenta las cinco políticas y se puede cerrar desde sus
+  botones o con Escape. Los controles Bootstrap conservan crema, azul noche y
+  borde gris de la identidad visual sin anular sus estados de validación.
+
 MiniReto 9 - Cards y promociones:
 - La flota y las rutas se presentan con las cards de Bootstrap dentro de sus
   filas; h-100 mantiene la altura uniforme de las tarjetas de cada fila.
