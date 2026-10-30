@@ -15,16 +15,23 @@
 <body class="pb-5">
     <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
     <header>
-        <nav class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 py-3 px-3 px-lg-5 mb-4" aria-label="Navegación principal">
-        <a class="marca d-inline-flex align-items-center gap-2" href="../index.html" aria-label="Rueda Libre, ir al inicio">
-            <img class="d-block" src="../img/images.jpeg" alt="">
-                <span>Rueda Libre</span>
-            </a>
-            <ul id="menu" class="list-unstyled d-flex flex-wrap justify-content-center gap-2 gap-md-3">
-                <li><a class="nav-link" href="../index.html">Inicio</a></li>
-                <li><a class="nav-link activo" href="tarifas.html" aria-current="page">Tarifas y rutas</a></li>
-                <li><a class="nav-link" href="reservas.html">Reservas</a></li>
-            </ul>
+        <nav class="navbar navbar-expand-lg py-3 px-3 px-lg-5 mb-4" data-bs-theme="dark" aria-label="Navegación principal">
+            <div class="container-fluid">
+                <a class="navbar-brand marca d-inline-flex align-items-center gap-2" href="../index.html" aria-label="Rueda Libre, ir al inicio">
+                    <img class="d-block" src="../img/images.jpeg" alt="">
+                    <span>Rueda Libre</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir o cerrar el menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="tarifas.html" aria-current="page">Tarifas y rutas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reservas.html">Reservas</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
         <h1 class="text-center my-4">Tarifas y recorridos</h1>
     </header>
@@ -66,7 +73,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p><a class="boton d-inline-block" href="reservas.html">Reservar ahora</a></p>
+                        <p><a class="btn btn-success" href="reservas.html">Reservar ahora</a></p>
                     </section>
                     <section id="recorridos-guiados" class="col-12" aria-labelledby="titulo-recorridos">
                         <h2 class="text-center mb-4" id="titulo-recorridos">Precios de recorridos guiados</h2>

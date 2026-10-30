@@ -47,9 +47,8 @@ a:hover {
 }
 
 :focus-visible,
-#menu a:focus,
-.boton:focus,
-button:focus {
+.btn:focus,
+.navbar-toggler:focus {
     outline: 0.1875rem solid var(--verde-ruta);
     outline-offset: 0.1875rem;
 }
@@ -76,18 +75,18 @@ mark {
 }
 
 /* Navegacion compartida */
-header nav {
+.navbar {
     background-color: var(--azul-noche);
 }
 
-header nav .marca {
+.navbar .navbar-brand {
     color: var(--blanco);
     font-family: var(--fuente-titulos);
     font-weight: 700;
     text-decoration: none;
 }
 
-header nav .marca img {
+.navbar .navbar-brand img {
     width: 2.75rem;
     height: 2.75rem;
     border: 2px solid var(--verde-ruta);
@@ -95,27 +94,20 @@ header nav .marca img {
     object-fit: cover;
 }
 
-#menu {
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    background-color: var(--crema);
-}
-
-#menu a {
-    padding: 0.25rem 0.5rem;
-    color: var(--gris-asfalto);
+.navbar .nav-link {
+    color: var(--blanco);
     font-weight: 600;
     text-decoration: none;
 }
 
-#menu a.activo {
-    color: var(--verde-ruta);
+.navbar .nav-link.active {
+    color: var(--naranja-pedal);
     text-decoration: underline;
     text-underline-offset: 0.2em;
 }
 
-#menu a:hover,
-#menu a:focus {
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
     border-radius: 0.1875rem;
     background-color: var(--naranja-pedal);
     color: var(--azul-noche);
@@ -270,30 +262,31 @@ th {
     font-weight: 600;
 }
 
-.boton,
-button {
-    padding: var(--espacio-medio) var(--espacio-grande);
-    border: 0;
-    border-radius: 0.25rem;
-    background-color: var(--verde-ruta);
-    color: var(--blanco);
-    font: inherit;
+.btn {
     font-weight: 600;
-    text-decoration: none;
 }
 
-button {
-    cursor: pointer;
+.btn-success {
+    --bs-btn-color: var(--blanco);
+    --bs-btn-bg: var(--verde-ruta);
+    --bs-btn-border-color: var(--verde-ruta);
+    --bs-btn-hover-color: var(--azul-noche);
+    --bs-btn-hover-bg: var(--naranja-pedal);
+    --bs-btn-hover-border-color: var(--naranja-pedal);
+    --bs-btn-active-color: var(--azul-noche);
+    --bs-btn-active-bg: var(--naranja-pedal);
+    --bs-btn-active-border-color: var(--naranja-pedal);
 }
 
-.boton:hover,
-.boton:focus,
-button:hover,
-button:focus {
-    background-color: var(--naranja-pedal);
-    color: var(--azul-noche);
-    text-decoration: underline;
-    text-underline-offset: 0.15em;
+.btn-outline-success {
+    --bs-btn-color: var(--verde-ruta);
+    --bs-btn-border-color: var(--verde-ruta);
+    --bs-btn-hover-color: var(--azul-noche);
+    --bs-btn-hover-bg: var(--naranja-pedal);
+    --bs-btn-hover-border-color: var(--naranja-pedal);
+    --bs-btn-active-color: var(--azul-noche);
+    --bs-btn-active-bg: var(--naranja-pedal);
+    --bs-btn-active-border-color: var(--naranja-pedal);
 }
 
 small,
