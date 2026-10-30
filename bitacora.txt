@@ -576,3 +576,13 @@ Actualización de navegación y llamadas a la acción:
 - Se verificó el breakpoint de 992 px: el toggler aparece por debajo y los
   enlaces se muestran desde 992 px. El menú responde a clic de mouse y
   navegación por teclado en viewport móvil.
+
+MiniReto 9 - Cards y promociones:
+- La flota y las rutas se presentan con las cards de Bootstrap dentro de sus
+  filas; h-100 mantiene la altura uniforme de las tarjetas de cada fila.
+- El carrusel de inicio muestra tres promociones con imagen, texto alternativo,
+  indicadores y controles anterior/siguiente con nombre accesible. Avanza
+  automáticamente cada cinco segundos y conserva el foco/operación por teclado.
+- El CSS propio se limita a la altura de las imágenes y a la legibilidad de los
+  pies del carrusel en móvil; las reglas de tarjeta que siguen en uso se
+  mantienen, sin dejar reglas de tarjetas obsoletas.

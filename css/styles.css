@@ -220,6 +220,23 @@ th {
     height: 12rem;
 }
 
+#carouselPromociones .carousel-item img {
+    height: 22rem;
+}
+
+#carouselPromociones .carousel-caption {
+    right: 12%;
+    left: 12%;
+    padding: var(--espacio-medio);
+    border-radius: 0.5rem;
+    background-color: rgb(20 33 61 / 85%);
+    color: var(--blanco);
+}
+
+#carouselPromociones .carousel-caption h3 {
+    color: var(--blanco);
+}
+
 .presentacion img {
     height: 14rem;
 }
@@ -292,6 +309,27 @@ th {
 small,
 dt {
     color: var(--gris-asfalto);
+}
+
+@media (max-width: 575.98px) {
+    #carouselPromociones .carousel-item img {
+        height: 18rem;
+    }
+
+    #carouselPromociones .carousel-caption {
+        right: 15%;
+        bottom: 1.5rem;
+        left: 15%;
+        padding: var(--espacio-pequeno);
+    }
+
+    #carouselPromociones .carousel-caption h3 {
+        font-size: 1rem;
+    }
+
+    #carouselPromociones .carousel-caption p {
+        font-size: 0.875rem;
+    }
 }
 
 
