@@ -15,66 +15,12 @@
     --espacio-extra-grande: 2rem;
 }
 
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
 body {
-    margin: 0 auto;
-    padding: 0 var(--espacio-medio) calc(var(--espacio-extra-grande) + 4rem);
     background-color: var(--crema);
     color: var(--azul-noche);
     font-family: var(--fuente-texto);
     font-weight: 400;
     line-height: 1.6;
-}
-
-main {
-    width: 100%;
-    max-width: 60rem;
-    margin: 0 auto;
-    text-align: center;
-}
-
-main p,
-main li,
-main td,
-main th,
-main label,
-main legend,
-main dl,
-main dt,
-main dd,
-main form,
-main aside,
-main article,
-main table {
-    text-align: left;
-}
-
-main form {
-    display: block;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-header,
-section,
-aside,
-footer {
-    margin-bottom: var(--espacio-extra-grande);
-}
-
-header img {
-    display: block;
-    margin: var(--espacio-grande) 0;
 }
 
 h1,
@@ -86,18 +32,8 @@ h3 {
     line-height: 1.2;
 }
 
-header h1,
-main h2 {
-    text-align: center;
-}
-
 header h1 {
-    margin: var(--espacio-extra-grande) auto;
     font-size: clamp(2rem, 5vw, 3rem);
-}
-
-main h2 {
-    margin-bottom: var(--espacio-grande);
 }
 
 a {
@@ -141,22 +77,10 @@ mark {
 
 /* Navegacion compartida */
 header nav {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--espacio-medio);
-    width: calc(100% + 2rem);
-    margin: 0 0 var(--espacio-grande) -1rem;
-    padding: 0.875rem 1rem;
     background-color: var(--azul-noche);
 }
 
 header nav .marca {
-    display: flex;
-    align-items: center;
-    gap: var(--espacio-pequeno);
     color: var(--blanco);
     font-family: var(--fuente-titulos);
     font-weight: 700;
@@ -164,35 +88,21 @@ header nav .marca {
 }
 
 header nav .marca img {
-    display: block;
     width: 2.75rem;
     height: 2.75rem;
-    margin: 0;
     border: 2px solid var(--verde-ruta);
     border-radius: 50%;
     object-fit: cover;
 }
 
-header nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--espacio-pequeno);
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
 #menu {
-    padding: var(--espacio-pequeno);
+    padding: 0.5rem;
     border-radius: 0.25rem;
     background-color: var(--crema);
 }
 
 #menu a {
-    display: block;
-    padding: 0.25rem var(--espacio-pequeno);
+    padding: 0.25rem 0.5rem;
     color: var(--gris-asfalto);
     font-weight: 600;
     text-decoration: none;
@@ -220,7 +130,7 @@ table {
     border-collapse: collapse;
 }
 
-/* Distribución que todavía usan las tablas de tarifas. */
+/* Presentación adaptable propia de las tablas de tarifas. */
 .tabla-responsiva {
     display: block;
     table-layout: auto;
@@ -295,8 +205,7 @@ th {
     color: var(--blanco);
 }
 
-#servicios article {
-    margin: 0;
+.tarjeta-servicio {
     padding: var(--espacio-grande);
     border: 1px solid rgb(20 33 61 / 8%);
     border-radius: 0.75rem;
@@ -305,82 +214,29 @@ th {
     transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-#servicios article:hover {
+.tarjeta-servicio:hover {
     transform: translateY(-0.2rem);
     box-shadow: 0 0.6rem 1.5rem rgb(20 33 61 / 14%);
 }
 
-#servicios article img {
-    display: block;
-    width: 100%;
-    max-width: 100%;
+.tarjeta-servicio img {
     height: 13rem;
-    margin: auto 0 0;
-    border-radius: 0.5rem;
-    object-fit: cover;
-}
-
-.presentacion {
-    text-align: left;
 }
 
 .imagen-ruta,
 .imagen-flota {
     height: 12rem;
-    object-fit: cover;
 }
 
 .presentacion img {
-    width: 100%;
     height: 14rem;
-    border-radius: 0.75rem;
-    object-fit: cover;
-}
-
-/* Distribución propia que aún necesita la página de reservas. */
-.reservas-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    align-items: start;
-    gap: var(--espacio-grande);
-    max-width: 70rem;
-}
-
-.campos-cortos {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-}
-
-.campos-cortos .campo {
-    min-width: 0;
-}
-
-.info-reserva {
-    display: flex;
-    flex-direction: column;
-    gap: var(--espacio-grande);
-    margin: 0;
-}
-
-.info-reserva section {
-    margin: 0;
-}
-
-.info-reserva h2 {
-    text-align: left;
 }
 
 .quienes-somos {
     background: rgb(30 122 79 / 8%);
 }
 
-#servicios article h3 {
-    margin-top: 0;
-}
-
-#servicios .servicio-nuevo {
-    position: relative;
+.servicio-nuevo {
     padding-top: 3.5rem;
     background: rgb(30 122 79 / 8%);
 }
@@ -406,9 +262,6 @@ th {
 }
 
 .etiqueta-nuevo {
-    position: absolute;
-    top: var(--espacio-medio);
-    right: var(--espacio-medio);
     padding: 0.25rem var(--espacio-pequeno);
     border-radius: 0.25rem;
     background-color: var(--naranja-pedal);
@@ -419,7 +272,6 @@ th {
 
 .boton,
 button {
-    display: inline-block;
     padding: var(--espacio-medio) var(--espacio-grande);
     border: 0;
     border-radius: 0.25rem;
@@ -445,42 +297,12 @@ button:focus {
 }
 
 small,
-dt,
-footer {
+dt {
     color: var(--gris-asfalto);
-}
-
-footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: var(--espacio-grande);
-    padding-top: var(--espacio-medio);
-    border-top: 1px solid var(--gris-asfalto);
-}
-
-.bloque-pie {
-    flex: 0 1 auto;
-    margin: 0;
-}
-
-.bloque-pie h2 {
-    margin: 0 0 var(--espacio-pequeno);
-    font-size: 1rem;
-}
-
-.bloque-pie p {
-    margin: 0;
 }
 
 
 .enlace-whatsapp {
-    position: fixed;
-    display: grid;
-    place-items: center;
-    right: 1.25rem;
-    bottom: 1.25rem;
     z-index: 2;
     width: 3.75rem;
     height: 3.75rem;
@@ -506,47 +328,21 @@ footer {
 }
 
 fieldset {
-    margin: 0 0 var(--espacio-grande);
-    padding: var(--espacio-medio);
     border: 1px solid var(--gris-asfalto);
 }
 
 legend {
-    padding: 0 var(--espacio-pequeno);
     color: var(--azul-noche);
     font-weight: 600;
 }
 
-.campo {
-    margin-bottom: var(--espacio-medio);
-}
-
-.campo > label {
-    display: block;
-}
-
-.opcion {
-    display: flex;
-    align-items: center;
-    gap: var(--espacio-pequeno);
-}
-
-.opcion label,
-.campo > input[type="checkbox"] + label {
-    display: inline-block;
-}
-
-input,
-select,
-textarea {
-    max-width: 100%;
+input {
     accent-color: var(--verde-ruta);
 }
 
 input:not([type="checkbox"]):not([type="radio"]),
 select,
 textarea {
-    width: 100%;
     padding: var(--espacio-pequeno) var(--espacio-medio);
     border: 1px solid var(--gris-asfalto);
     border-radius: 0.25rem;
@@ -563,40 +359,7 @@ textarea:focus {
 }
 
 @media (min-width: 48rem) {
-    body {
-        padding-right: var(--espacio-grande);
-        padding-left: var(--espacio-grande);
-    }
-
-    header nav {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-        gap: var(--espacio-grande);
-        width: calc(100% + 3rem);
-        margin-left: -1.5rem;
-        padding: var(--espacio-medio) max(1.5rem, calc((100vw - 60rem) / 2));
-    }
-
-    header nav .marca {
-        grid-column: 1;
-    }
-
-    header nav ul {
-        grid-column: 2;
-        justify-content: center;
-        gap: var(--espacio-pequeno) var(--espacio-grande);
-        width: auto;
-    }
-
-    footer {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .bloque-pie {
-        flex: 1 1 12rem;
-    }
-
+    /* Las tablas conservan su formato propio en pantallas medianas y grandes. */
     .tabla-responsiva {
         display: table;
         table-layout: fixed;
@@ -642,37 +405,7 @@ textarea:focus {
         content: none;
     }
 
-    /* Distribución responsive exclusiva de la página de reservas. */
-    .reservas-layout {
-        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-        gap: var(--espacio-extra-grande);
-    }
-
-    .campos-cortos {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--espacio-medio);
-    }
-
     .presentacion img {
         height: 19rem;
-    }
-}
-
-@media (min-width: 75rem) {
-    body {
-        padding-right: var(--espacio-extra-grande);
-        padding-left: var(--espacio-extra-grande);
-    }
-
-    header nav {
-        width: calc(100% + 4rem);
-        margin-left: -2rem;
-        padding-right: max(2rem, calc((100vw - 75rem) / 2));
-        padding-left: max(2rem, calc((100vw - 75rem) / 2));
-    }
-
-    main,
-    .reservas-layout {
-        max-width: 75rem;
     }
 }
