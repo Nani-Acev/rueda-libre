@@ -463,3 +463,37 @@ desde ese breakpoint. El verde success y el fondo warning con texto oscuro
 siguen la intención de color y contraste del mapa de la marca; son los tonos
 de Bootstrap, no una reproducción exacta de los colores de marca, porque esta
 prueba no agrega CSS propio.
+
+Integración de Bootstrap en Inicio
+
+Se agregó Bootstrap 5.3.3 antes de css/styles.css y su bundle al final de
+index.html. La portada, las rutas, la flota, los beneficios, servicios y la
+lista de quiénes somos ahora usan filas, columnas y utilidades Bootstrap. Se
+conservaron las fuentes Montserrat y Open Sans, y la paleta propia en las
+reglas de styles.css; las reglas de distribución propias de esas secciones se
+retiraron. Las tarjetas conservan recorte uniforme de imágenes.
+
+Conflictos revisados en DevTools (Styles/Computed) y solución
+
+1. Tipografía y color de texto: Bootstrap define su familia de sistema y el
+   color de texto base. styles.css se carga después y vuelve a declarar Open
+   Sans y azul noche en body, además de Montserrat en los encabezados. El valor
+   calculado comprobado es Open Sans y rgb(20, 33, 61), de modo que se mantiene
+   la identidad sin !important.
+2. Color de enlaces: el color azul predeterminado de Bootstrap entra en
+   conflicto con el verde de marca. La regla propia a, cargada después, resuelve
+   la cascada; el color calculado de un enlace normal es rgb(30, 122, 79). Los
+   botones conservan el verde, el texto blanco y sus estados de interacción.
+3. Ancho y márgenes: el max-width propio de main podía limitar el contenedor
+   responsive de Bootstrap. Se quitó la regla especial .inicio main y se añadió
+   la clase container a main; las utilidades mb-* controlan el espaciado de los
+   encabezados y secciones migrados. En Styles, container y mb-4 aplican el
+   ancho y margen de Bootstrap sin añadir !important al CSS propio.
+
+Prueba responsive de Inicio en modo dispositivo
+
+Ancho | Portada | Rutas | Flota | Beneficios | Desbordamiento horizontal
+------|---------|-------|-------|------------|--------------------------
+360 px | 1 columna | 1 columna | 1 columna | 1 columna | No
+768 px | 2 columnas | 3 columnas | 2 columnas | 2 columnas | No
+1280 px | 2 columnas | 3 columnas | 4 columnas | 4 columnas | No
