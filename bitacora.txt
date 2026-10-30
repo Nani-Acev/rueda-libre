@@ -497,3 +497,71 @@ Ancho | Portada | Rutas | Flota | Beneficios | Desbordamiento horizontal
 360 px | 1 columna | 1 columna | 1 columna | 1 columna | No
 768 px | 2 columnas | 3 columnas | 2 columnas | 2 columnas | No
 1280 px | 2 columnas | 3 columnas | 4 columnas | 4 columnas | No
+
+Migración del sitio completo y comparativa v2.0-beta
+
+Migré tarifas y reservas a Bootstrap 5.3.3, manteniendo styles.css después
+del CSS de Bootstrap en las tres páginas. En tarifas, las dos tablas quedan
+en la columna de 8/12 y la información complementaria en la columna de 4/12
+desde lg. Se conserva la presentación móvil en fichas de .tabla-responsiva.
+En reservas, formulario e información de contacto usan columnas 8/4 desde
+md; documento y celular usan columnas iguales desde md. Se conservaron los
+13 atributos nativos de validación que ya tenía el formulario.
+
+La navegación, el pie, las secciones y las filas de campos usan utilidades
+Bootstrap. styles.css ya no distribuye la portada, rutas, flota, beneficios,
+servicios, navegación, pie ni el formulario; mantiene identidad de marca,
+componentes, foco, controles y el formato responsive propio de las tablas.
+La página pruebas/catalogo-bootstrap.html conserva las siete bicicletas,
+los cuatro beneficios y el bundle usados en la prueba aislada.
+
+Comparación medida de styles.css:
+- v1.5: 808 líneas en el commit de GitHub b86e1db
+  (https://github.com/Nani-Acev/rueda-libre/commit/b86e1dbfa6267008a7caadd63ca936953c50454c).
+- v2.0-beta local: 411 líneas. Reducción de 397 líneas (49,1 %), contando
+  líneas físicas; se mantuvo el CSS particular necesario para las tablas.
+
+Tiempo de trabajo:
+- v1.5: no hay cronometraje registrado en su commit ni en la bitácora. No es
+  posible comparar honestamente el tiempo de ambas versiones. El registro de
+  1 min 55 s en esta bitácora corresponde solo al prototipo del catálogo, no
+  al desarrollo completo de v1.5.
+- v2.0-beta: 9 min 38 s desde la solicitud (08:08:49) hasta la verificación
+  final de estilos y responsive (08:18:27, UTC-05:00); no incluye el commit,
+  el push ni la publicación.
+
+Conflictos y resolución con DevTools:
+1. Los valores predeterminados de Bootstrap para fuente y texto competían con
+   la identidad de Rueda Libre. Al cargar styles.css después, los valores
+   calculados vuelven a Open Sans, Montserrat y azul noche.
+2. El color de .nav-link competía con el gris/verde del menú. Las reglas
+   #menu a y #menu a.activo, con mayor especificidad y en la hoja posterior,
+   conservan los colores de marca y el estado activo.
+3. .form-control y .form-select aportan bordes, fondos y foco predeterminados.
+   Las reglas de controles de styles.css, después de Bootstrap, mantienen el
+   fondo crema, el borde gris asfalto y el contorno verde; se verificó el borde
+   calculado rgb(91, 100, 112). No se usó !important.
+
+Pruebas en navegador:
+- Inicio, Tarifas y Reservas: 360, 768 y 1280 px; ningún ancho presentó
+  desbordamiento horizontal.
+- A 1280 px, Tarifas mostró tablas e información en columnas 8/4; a 768 px,
+  Reservas mostró formulario y contacto en columnas 8/4. En móvil se apilaron.
+- En el formulario se comprobaron rechazos de documento, celular, correo,
+  fecha fuera de rango, cantidad máxima y valor decimal, y aceptación de
+  documento y celular válidos. Los 9 campos required siguen presentes.
+- Bootstrap CSS y bundle cargaron en las tres páginas; styles.css fue la
+  última hoja de estilos.
+
+Ventajas: el layout adaptable estándar queda expresado en clases del marcado
+y se retiraron 397 líneas netas frente a la hoja de v1.5. Las columnas y los
+breakpoints se pueden revisar y ajustar sin mantener otra cuadrícula propia.
+Desventajas: el HTML queda más acoplado a Bootstrap y el CDN es una dependencia;
+la tabla móvil todavía necesita reglas específicas y la cascada requiere
+atención para conservar marca y controles.
+
+Conclusión: Bootstrap reduce claramente el CSS de distribución medido
+(49,1 %) y facilita aplicar layouts consistentes en las tres páginas. No se
+puede afirmar con estos datos que redujo el tiempo frente a v1.5 porque aquella
+versión no se cronometró. El bundle local queda listo para v2.0-beta, pero la
+publicación en GitHub Pages depende de poder hacer push al repositorio.
