@@ -371,9 +371,9 @@ input {
     accent-color: var(--verde-ruta);
 }
 
-input:not([type="checkbox"]):not([type="radio"]),
-select,
-textarea {
+input:not([type="checkbox"]):not([type="radio"]):not(.form-control),
+select:not(.form-select),
+textarea:not(.form-control) {
     padding: var(--espacio-pequeno) var(--espacio-medio);
     border: 1px solid var(--gris-asfalto);
     border-radius: 0.25rem;
@@ -382,11 +382,24 @@ textarea {
     font: inherit;
 }
 
-input:not([type="checkbox"]):not([type="radio"]):focus,
-select:focus,
-textarea:focus {
+input:not([type="checkbox"]):not([type="radio"]):not(.form-control):focus,
+select:not(.form-select):focus,
+textarea:not(.form-control):focus {
     outline: 0.1875rem solid var(--verde-ruta);
     outline-offset: 0.125rem;
+}
+
+.formulario-reserva .form-control,
+.formulario-reserva .form-select {
+    border-color: var(--gris-asfalto);
+    background-color: var(--crema);
+    color: var(--azul-noche);
+}
+
+.formulario-reserva .form-control:focus,
+.formulario-reserva .form-select:focus {
+    border-color: var(--verde-ruta);
+    box-shadow: 0 0 0 0.25rem rgb(30 122 79 / 25%);
 }
 
 @media (min-width: 48rem) {

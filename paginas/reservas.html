@@ -40,32 +40,40 @@
         <div class="row g-4">
         <section class="formulario-reserva col-12 col-md-8" aria-labelledby="formulario-reserva">
             <h2 class="text-center mb-4" id="formulario-reserva">Formulario de reserva</h2>
-            <form action="reservas.html" method="post">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <strong>Recuerda:</strong> trae tu documento de identidad original para recoger la bicicleta.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar aviso"></button>
+            </div>
+            <form class="needs-validation" action="reservas.html" method="post" novalidate>
                 <fieldset class="p-3 mb-4">
                     <legend class="px-2">Tus datos</legend>
 
                     <div class="campo mb-3">
                         <label class="form-label" for="nombre">Nombre completo</label>
-                        <input class="form-control" type="text" id="nombre" name="nombre" autocomplete="name" required minlength="3">
+                        <input class="form-control" type="text" id="nombre" name="nombre" autocomplete="name" required minlength="3" aria-describedby="error-nombre">
+                        <div class="invalid-feedback" id="error-nombre">Escribe tu nombre completo con al menos 3 caracteres.</div>
                     </div>
 
                     <div class="row g-3">
                         <div class="campo mb-3 col-12 col-md-6">
                             <label class="form-label" for="documento">Número de documento</label>
-                            <input class="form-control" type="text" id="documento" name="documento" inputmode="numeric" required minlength="6" maxlength="10" pattern="[0-9]{6,10}" title="Ingresa solo números, entre 6 y 10 dígitos." aria-describedby="ayuda-documento">
+                            <input class="form-control" type="text" id="documento" name="documento" inputmode="numeric" required minlength="6" maxlength="10" pattern="[0-9]{6,10}" title="Ingresa solo números, entre 6 y 10 dígitos." aria-describedby="ayuda-documento error-documento">
                             <small id="ayuda-documento">Ingresa solo números, entre 6 y 10 dígitos.</small>
+                            <div class="invalid-feedback" id="error-documento">Ingresa entre 6 y 10 dígitos, sin espacios ni letras.</div>
                         </div>
 
                         <div class="campo mb-3 col-12 col-md-6">
                             <label class="form-label" for="celular">Celular</label>
-                            <input class="form-control" type="tel" id="celular" name="celular" autocomplete="tel" inputmode="numeric" required minlength="10" maxlength="10" pattern="3[0-9]{9}" title="Ingresa 10 dígitos; el número debe comenzar por 3." aria-describedby="ayuda-celular">
+                            <input class="form-control" type="tel" id="celular" name="celular" autocomplete="tel" inputmode="numeric" required minlength="10" maxlength="10" pattern="3[0-9]{9}" title="Ingresa 10 dígitos; el número debe comenzar por 3." aria-describedby="ayuda-celular error-celular">
                             <small id="ayuda-celular">Ingresa 10 dígitos; el número debe comenzar por 3.</small>
+                            <div class="invalid-feedback" id="error-celular">Ingresa 10 dígitos numéricos; el celular debe empezar por 3.</div>
                         </div>
                     </div>
 
                     <div class="campo mb-3">
                         <label class="form-label" for="correo">Correo electrónico</label>
-                        <input class="form-control" type="email" id="correo" name="correo" autocomplete="email" required>
+                        <input class="form-control" type="email" id="correo" name="correo" autocomplete="email" required aria-describedby="error-correo">
+                        <div class="invalid-feedback" id="error-correo">Ingresa un correo válido, por ejemplo nombre@dominio.com.</div>
                     </div>
                 </fieldset>
 
@@ -74,14 +82,16 @@
 
                     <div class="campo mb-3">
                         <label class="form-label" for="fecha">Fecha del alquiler</label>
-                        <input class="form-control" type="date" id="fecha" name="fecha" required min="2026-11-01" max="2026-12-31">
+                        <input class="form-control" type="date" id="fecha" name="fecha" required min="2026-11-01" max="2026-12-31" aria-describedby="error-fecha">
+                        <div class="invalid-feedback" id="error-fecha">Selecciona una fecha entre el 1 de noviembre y el 31 de diciembre de 2026.</div>
                     </div>
 
                     <fieldset class="campo p-3 mb-3">
                         <legend class="px-2">Tipo de bicicleta</legend>
                         <div class="opcion form-check">
-                            <input class="form-check-input" type="radio" id="bicicleta-urbana" name="tipo-bicicleta" value="urbana" required>
+                            <input class="form-check-input" type="radio" id="bicicleta-urbana" name="tipo-bicicleta" value="urbana" required aria-describedby="error-bicicleta">
                             <label class="form-check-label" for="bicicleta-urbana">Urbana</label>
+                            <div class="invalid-feedback" id="error-bicicleta">Selecciona el tipo de bicicleta que deseas alquilar.</div>
                         </div>
                         <div class="opcion form-check">
                             <input class="form-check-input" type="radio" id="bicicleta-montana" name="tipo-bicicleta" value="montana">
@@ -95,17 +105,19 @@
 
                     <div class="campo mb-3">
                         <label class="form-label" for="plan">Plan</label>
-                        <select class="form-select" id="plan" name="plan" required>
+                        <select class="form-select" id="plan" name="plan" required aria-describedby="error-plan">
                             <option value="">Selecciona un plan</option>
                             <option value="1-hora">1 hora</option>
                             <option value="medio-dia">Medio día</option>
                             <option value="dia-completo">Día completo</option>
                         </select>
+                        <div class="invalid-feedback" id="error-plan">Selecciona uno de los planes disponibles.</div>
                     </div>
 
                     <div class="campo mb-3">
                         <label class="form-label" for="cantidad">Cantidad de bicicletas</label>
-                        <input class="form-control" type="number" id="cantidad" name="cantidad" required min="1" max="6" step="1">
+                        <input class="form-control" type="number" id="cantidad" name="cantidad" required min="1" max="6" step="1" aria-describedby="error-cantidad">
+                        <div class="invalid-feedback" id="error-cantidad">Ingresa un número entero entre 1 y 6.</div>
                     </div>
 
                     <div class="campo mb-3">
@@ -128,8 +140,10 @@
                     </div>
 
                     <div class="campo mb-3 form-check">
-                        <input class="form-check-input" type="checkbox" id="politicas" name="politicas" value="aceptadas" required>
+                        <input class="form-check-input" type="checkbox" id="politicas" name="politicas" value="aceptadas" required aria-describedby="error-politicas">
                         <label class="form-check-label" for="politicas">Acepto las políticas de alquiler</label>
+                        <button class="btn btn-outline-success btn-sm ms-2" type="button" data-bs-toggle="modal" data-bs-target="#modalPoliticas">Leer políticas</button>
+                        <div class="invalid-feedback" id="error-politicas">Marca la casilla para confirmar que aceptas las políticas de alquiler.</div>
                     </div>
                 </fieldset>
 
@@ -156,6 +170,29 @@
         </div>
     </main>
 
+    <div class="modal fade" id="modalPoliticas" tabindex="-1" aria-labelledby="titulo-modal-politicas" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="titulo-modal-politicas">Políticas de alquiler</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <ol>
+                        <li>Presenta tu documento de identidad original al recoger la bicicleta.</li>
+                        <li>Revisa la bicicleta con el asesor antes de salir.</li>
+                        <li>Cada 15 minutos de retraso en la devolución tienen un recargo de $5.000.</li>
+                        <li>Los daños por mal uso se cobran según el costo de la reparación.</li>
+                        <li>Los menores de edad deben estar acompañados por un adulto responsable.</li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="container row gy-4 mx-auto mt-5 pt-4 pb-5 border-top">
         <section class="bloque-pie col-12 col-md-4" aria-labelledby="marca-pie">
             <h2 class="h6 mb-2" id="marca-pie">Rueda Libre</h2>
@@ -176,5 +213,25 @@
         </svg>
     </a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
 </body>
 </html>
