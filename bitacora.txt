@@ -534,9 +534,9 @@ Conflictos y resolución con DevTools:
 1. Los valores predeterminados de Bootstrap para fuente y texto competían con
    la identidad de Rueda Libre. Al cargar styles.css después, los valores
    calculados vuelven a Open Sans, Montserrat y azul noche.
-2. El color de .nav-link competía con el gris/verde del menú. Las reglas
-   #menu a y #menu a.activo, con mayor especificidad y en la hoja posterior,
-   conservan los colores de marca y el estado activo.
+2. El color de .nav-link de Bootstrap competía con la paleta de marca. Las
+   reglas .navbar .nav-link y .navbar .nav-link.active, en la hoja posterior,
+   conservan el contraste sobre azul noche y el indicador de página actual.
 3. .form-control y .form-select aportan bordes, fondos y foco predeterminados.
    Las reglas de controles de styles.css, después de Bootstrap, mantienen el
    fondo crema, el borde gris asfalto y el contorno verde; se verificó el borde
@@ -565,3 +565,14 @@ Conclusión: Bootstrap reduce claramente el CSS de distribución medido
 puede afirmar con estos datos que redujo el tiempo frente a v1.5 porque aquella
 versión no se cronometró. El bundle local queda listo para v2.0-beta, pero la
 publicación en GitHub Pages depende de poder hacer push al repositorio.
+
+Actualización de navegación y llamadas a la acción:
+- Las tres páginas usan navbar-expand-lg con un único destino navbarNav para
+  toggler y collapse; active y aria-current="page" identifican la página actual.
+- Cada página carga una sola vez bootstrap.bundle.min.js al final del body.
+- Las acciones de reserva usan btn-success; las de consulta y ubicación,
+  btn-outline-success. Se aplicaron btn-sm a las acciones de tarjetas y
+  btn-lg a la reserva principal.
+- Se verificó el breakpoint de 992 px: el toggler aparece por debajo y los
+  enlaces se muestran desde 992 px. El menú responde a clic de mouse y
+  navegación por teclado en viewport móvil.
