@@ -1,0 +1,653 @@
+Analisis de la peticion al servidor
+URL solicitada: http://127.0.0.1:5500/index.html
+Respuesta observada anteriormente: 403 Forbidden. El servidor encontro el recurso, pero denego el acceso; no es un error 404 de ruta inexistente.
+Al navegar, el navegador solicita cada documento y sus recursos al servidor. Una respuesta 2xx indica exito; 403 indica acceso prohibido y 404 indica que la ruta no existe.
+
+Esquema de regiones semanticas (antes de editar el HTML)
+
+Inicio (index.html)
+header
+  identidad: nombre del negocio, logo y presentacion breve
+  nav principal: Inicio | Tarifas y rutas | Reservas
+main
+  contenido introductorio y enlace al punto de alquiler
+  section "¿Quienes somos?"
+  section "Nuestros servicios"
+    article "Alquiler por horas"
+    article "Alquiler por dia"
+    article "Rutas guiadas"
+  section "¿Como alquilar?"
+  section "Encuentranos"
+  enlace "Reservar ahora"
+footer
+
+Tarifas y recorridos (paginas/tarifas.html)
+header
+  identidad: logo y titulo de la pagina
+  nav principal: Inicio | Tarifas y rutas | Reservas
+main
+  section "Tarifas de alquiler" (tabla)
+  section "Precios de recorridos guiados" (tabla)
+  aside de informacion complementaria
+    lista "Que llevar"
+footer
+
+Reservas (paginas/reservas.html)
+header
+  identidad: nombre del negocio y titulo de la pagina
+  nav principal: Inicio | Tarifas y rutas | Reservas
+main
+  section "Contacto"
+  aside "Horario de atencion"
+footer
+
+No se requieren div ni span: los bloques tienen un equivalente semantico
+apropiado (header, nav, main, section, article, aside o footer).
+
+Roles de las tecnologias
+HTML define la estructura y el contenido semantico de las paginas.
+CSS controla la presentacion visual, como colores, espaciado y tipografia.
+JavaScript agrega comportamiento e interactividad; estas paginas no lo necesitan para navegar entre ellas.
+
+Tabla de rutas relativas del menu
+Archivo de origen         | Destino             | Ruta escrita
+--------------------------|---------------------|----------------------
+index.html                | Inicio              | index.html
+index.html                | Tarifas y rutas     | paginas/tarifas.html
+index.html                | Reservas            | paginas/reservas.html
+paginas/tarifas.html       | Inicio              | ../index.html
+paginas/tarifas.html       | Tarifas y rutas     | tarifas.html
+paginas/tarifas.html       | Reservas            | reservas.html
+paginas/reservas.html      | Inicio              | ../index.html
+paginas/reservas.html      | Tarifas y rutas     | tarifas.html
+paginas/reservas.html      | Reservas            | reservas.html
+
+MiniReto 6: formulario de reserva
+En reservas.html agregue el formulario dentro de main y lo organicé en los
+grupos "Tus datos", "Tu alquiler" y "Confirmación".
+
+Elecciones de controles:
+- Correo electrónico usa input type="email" para identificar el dato y permitir
+  que el navegador compruebe su formato básico.
+- Tipo de bicicleta usa opciones radio con el mismo name, porque se debe elegir
+  una sola alternativa entre urbana, montaña y eléctrica.
+- Recorrido guiado usa una lista desplegable porque permite elegir una opción
+  entre ninguna y las tres rutas sin ocupar espacio con opciones siempre visibles.
+
+Cada control tiene un id relacionado con su label mediante for y un name para el
+envío. El formulario usa POST y apunta a reservas.html; el sitio es estático y
+aún no tiene un servicio que procese las reservas.
+
+MiniReto 7: validación nativa y navegación por teclado
+Las reglas se implementaron con atributos HTML nativos en reservas.html.
+El documento acepta de 6 a 10 dígitos; el celular acepta 10 dígitos que
+comienzan por 3. Ambos campos muestran el formato esperado. La fecha permitida
+va del 1 de noviembre al 31 de diciembre de 2026, inclusive.
+
+Tabla de pruebas ejecutadas en el navegador
+Campo                  | Dato de prueba                 | Resultado esperado                    | Resultado obtenido
+-----------------------|--------------------------------|---------------------------------------|-------------------
+Nombre completo        | Li                             | Rechazado (menos de 3 caracteres)     | Inválido; bloqueado
+Documento              | 12AB56                         | Rechazado (contiene letras)           | Inválido; bloqueado
+Documento              | 123456                         | Aceptado (6 dígitos)                  | Válido
+Correo                 | correo-invalido                | Rechazado (formato incorrecto)        | Inválido; bloqueado
+Celular                | 3001234567                     | Aceptado                              | Válido
+Celular                | 1234567890                     | Rechazado (no empieza por 3)          | Inválido; bloqueado
+Celular                | 300123                         | Rechazado (menos de 10 dígitos)       | Inválido; bloqueado
+Fecha                  | 2026-10-31                     | Rechazada (anterior al rango)         | Inválida; bloqueada
+Fecha                  | 2026-11-01                     | Aceptada (primer día permitido)       | Válida
+Fecha                  | 2026-12-31                     | Aceptada (último día permitido)       | Válida
+Fecha                  | 2027-01-01                     | Rechazada (posterior al rango)        | Inválida; bloqueada
+Cantidad               | 0                              | Rechazada (menor que 1)               | Inválida; bloqueada
+Cantidad               | 1 y 6                          | Aceptados (límites permitidos)        | Válidos
+Cantidad               | 7                              | Rechazada (mayor que 6)               | Inválida; bloqueada
+Cantidad               | 2.5                            | Rechazada (no es entero)              | Inválida; bloqueada
+Comentarios            | 301 caracteres                 | Limitar a máximo 300                 | El control limitó el texto a 300
+Plan                   | Sin seleccionar                | Rechazado                             | Inválido; bloqueado
+Tipo de bicicleta      | Sin seleccionar                | Rechazado                             | Inválido; bloqueado
+Políticas              | Casilla sin marcar             | Rechazado                             | Inválido; bloqueado
+Formulario completo    | Todos los datos válidos        | Aceptado por validación               | Válido
+
+Recorrido de teclado: Tab avanza en el orden del formulario y Shift+Tab
+retrocede; las flechas cambian la opción de bicicleta seleccionada, Espacio
+alterna la casilla de políticas y Enter no envía el formulario si falta un
+campo requerido. Se comprobó el recorrido inverso desde el botón hasta el
+grupo de bicicletas. La página sigue siendo estática y no procesa ni guarda
+reservas en un servidor.
+
+MiniReto 8: auditoria de accesibilidad y contraste
+
+Alcance: index.html, paginas/tarifas.html y paginas/reservas.html.
+Se revisaron alternativas de texto, estructura de encabezados, nombres de
+enlaces, idioma del documento y recorrido por teclado. Las tres paginas tienen
+lang="es"; las imagenes informativas tienen textos alternativos descriptivos
+(logo, bicicleta urbana y ruta ciclista), y la jerarquia de encabezados no
+salta niveles. Las tablas usan caption y encabezados de fila/columna. Los
+campos del formulario tienen etiquetas visibles y agrupaciones semanticas.
+
+Hallazgo | Correccion
+---------|-----------
+No habia un mecanismo para saltar la navegacion repetida. | Se agrego al inicio de cada pagina el enlace "Saltar al contenido principal", que lleva al main enfocable.
+La navegacion no identificaba cual pagina estaba activa. | Se agrego aria-current="page" al enlace actual del menu en cada pagina.
+El foco de teclado dependia del estilo predeterminado del navegador. | Se definio un contorno de foco visible, de 3 px y con separacion, para enlaces y controles.
+El enlace "Reservar ahora" no describia el objeto de la reserva cuando se escuchaba fuera de contexto. | Se cambio por "Reserva una bicicleta" en Inicio y Tarifas.
+El enlace al mapa abria una pestana nueva sin avisar. | El texto visible ahora indica que el mapa se abre en una pestana nueva.
+La posicion inicial del foco no permitia saltar al contenido principal. | Se asigno id y tabindex="-1" al elemento main de las tres paginas para que el destino del enlace de salto reciba el foco.
+
+Prueba de teclado: desde el inicio de cada pagina, Tab muestra primero el enlace
+de salto; Enter mueve el foco al contenido principal. Tab y Shift+Tab recorren
+los enlaces y controles en orden de lectura, y el contorno de foco permanece
+visible. En Reservas se puede recorrer y operar el formulario con teclado, usar
+las flechas para el grupo de opciones y activar la casilla con Espacio. No se
+usa tabindex positivo ni se depende de color como unico indicador.
+
+Mapa de uso de color
+
+Los contrastes se calcularon con la formula de luminancia relativa sRGB de
+WCAG. Para texto normal se exige 4.5:1 y para texto grande 3:1.
+
+Texto | Fondo | Contraste | Clasificacion
+------|-------|-----------|--------------
+Blanco (#FFFFFF) | Verde Ruta (#1E7A4F) | 5.31:1 | Apta para texto normal
+Blanco (#FFFFFF) | Naranja Pedal (#F39A2B) | 2.22:1 | No apta
+Azul Noche (#14213D) | Naranja Pedal (#F39A2B) | 7.20:1 | Apta para texto normal
+Azul Noche (#14213D) | Crema (#FAF6EF) | 14.83:1 | Apta para texto normal
+Gris Asfalto (#5B6470) | Crema (#FAF6EF) | 5.57:1 | Apta para texto normal
+Verde Ruta (#1E7A4F) | Crema (#FAF6EF) | 4.93:1 | Apta para texto normal
+Naranja Pedal (#F39A2B) | Crema (#FAF6EF) | 2.06:1 | No apta
+Blanco (#FFFFFF) | Azul Noche (#14213D) | 15.97:1 | Apta para texto normal
+
+Uso recomendado:
+- Fondos generales: Crema.
+- Texto principal y titulos: Azul Noche.
+- Texto secundario: Gris Asfalto sobre Crema.
+- Enlaces y botones principales: Verde Ruta con texto blanco; el contraste
+  supera 4.5:1.
+- Botones secundarios/destacados: Naranja Pedal con texto Azul Noche; no usar
+  texto blanco sobre naranja. No usar Naranja Pedal como texto sobre Crema.
+- El naranja sobre crema queda reservado a elementos decorativos no textuales
+  que no dependan solo del color para comunicar informacion.
+
+Publicacion: pendiente de habilitar/verificar GitHub Pages. URL publica:
+pendiente de confirmacion.
+
+MiniReto 9: cascada, enlaces y foco
+
+En cada pagina, la lista de navegacion tiene id="menu" y el enlace actual
+recibe class="activo" y aria-current="page". En DevTools, la regla #menu a
+prevalecia sobre .activo para el color: su especificidad es (1, 0, 1)
+(un ID, cero clases y un elemento), mientras que .activo es (0, 1, 0)
+(cero ID, una clase y cero elementos). Por eso la declaracion de color de
+.activo aparecia tachada.
+
+Se conservaron las dos reglas y se resolvio el conflicto con #menu a.activo,
+cuya especificidad es (1, 1, 1); asi el enlace actual se distingue con verde,
+negrita y subrayado sin !important ni estilos en linea. El menu usa fondo
+crema para que el gris asfalto de #menu a tenga contraste suficiente. Los
+estados hover y focus usan texto azul noche sobre naranja pedal.
+
+Los enlaces "Reservar ahora" usan la clase .boton y tienen aspecto de boton,
+con fondo verde y texto blanco; al pasar el puntero o recibir foco cambian a
+fondo naranja y texto azul noche. Los campos del formulario muestran un
+contorno verde visible al recibir foco.
+El contenedor .campo tambien recibe un contorno con :focus-within como respaldo
+para controles nativos, como la fecha, cuyo contorno puede variar segun el
+navegador. Se conserva el contorno general para los demas elementos interactivos.
+
+Verificacion: con la pestaña Styles de DevTools se compararon las reglas de
+#menu a y .activo, la declaracion tachada y el selector de mayor especificidad.
+El boton :hov permite revisar hover y focus; en las tres paginas se verifico
+el recorrido por Tab y el indicador visible. Contrastes de texto pertinentes:
+gris asfalto sobre crema 5.57:1; verde ruta sobre crema 4.93:1; azul noche
+sobre naranja pedal 7.20:1; blanco sobre verde ruta 5.31:1.
+
+Estilos de marca y verificacion de herencia
+
+Se conecto css/styles.css a las tres paginas con rutas relativas. Las tres
+cargan Montserrat 700 y Open Sans 400/600 desde Google Fonts. Los colores se
+centralizaron en variables CSS, siguiendo el mapa aprobado: barra de
+navegacion Azul Noche, panel Crema con enlaces Gris Asfalto; Verde Ruta
+identifica la pagina activa y se usa para enlaces sobre Crema y botones con
+texto Blanco. Naranja Pedal con Azul Noche se reserva para estados hover y
+destacados.
+
+Verificacion de estilos computados en el navegador:
+- En el parrafo de index.html, tarifas.html y reservas.html, font-family es
+  Open Sans y color es Azul Noche, heredados de body.
+- background-color del parrafo es transparente (rgba(0, 0, 0, 0)); no hereda
+  el fondo Crema de body.
+- Los encabezados h1 muestran Montserrat con peso 700.
+- Se confirmo la carga de Montserrat 700 y Open Sans 400/600, y la hoja externa
+  de CSS en las tres paginas.
+
+Modelo de caja y espaciado
+
+Se aplico box-sizing: border-box a todos los elementos y pseudoelementos.
+El contenido principal tiene max-width: 60rem y margenes automaticos; en la
+portada de inicio usa min-height: 70vh. Los servicios ahora son tarjetas con
+relleno, borde, esquinas redondeadas y separacion de la escala de espaciado.
+Las imagenes ocupan el 100% del ancho interior de sus tarjetas. Las tablas
+tienen celdas con relleno y bordes; sus encabezados usan Azul Noche con texto
+Blanco para mantener el contraste. El formulario muestra las etiquetas encima
+de los campos, usa campos de ancho completo y un boton con mas relleno. El menu
+mantiene sus opciones en una fila.
+
+Medicion en DevTools (Computed), misma tarjeta con width: 100%, padding:
+1.5rem y border: 1px, en un viewport de 277px:
+- Antes, box-sizing: content-box: ancho total 295px.
+- Despues, box-sizing: border-box: ancho total 245px.
+- Diferencia: 50px; el relleno (48px) y los bordes (2px) quedan incluidos
+  dentro del ancho de la tarjeta con border-box.
+
+Verificacion computada en navegador:
+- Las tarjetas usan border-box y su imagen queda dentro del borde.
+- El main tiene max-width de 960px (60rem) y la portada min-height de 560px
+  (70vh) en viewport de 800px de alto.
+- Los encabezados de tabla muestran fondo Azul Noche, texto Blanco, relleno
+  de 8px y borde de 1px.
+- Las etiquetas de formulario son bloques, los controles ocupan el ancho de
+  sus grupos y el boton tiene 16px 24px de relleno.
+- Las opciones del menu permanecen en una fila.
+- En pantallas estrechas, las tablas ajustan sus columnas y no generan
+  desbordamiento horizontal de la pagina.
++
++Cierre de la semana y resumen de MiniRetos
++
++Rueda Libre v1.0 integra los 12 mini retos en un sitio navegable, legible y
++publicado. Durante la semana construimos la base del repositorio y la vitrina
++de inicio (MiniReto 1 y 2), luego añadimos tarifas y rutas con estructura y
++relaciones claras (MiniReto 3), y consolidamos la navegacion para las tres
++paginas (MiniReto 4 y 5). El formulario de reservas se completó con reglas
++nativas, validación y recorrido por teclado (MiniRetos 6 y 7), y se cerró la
++fase de accesibilidad con contraste y foco visible (MiniReto 8).
++
++La identidad visual se consolidó con variables, tipografías, colores y estados
++de interacción (MiniRetos 9 y 10). El modelo de caja fue el eje del orden
++visual: tarjetas, tablas, formulario y contenedor principal quedaron con
++espaciado y ancho controlado (MiniReto 11). Para cerrar la entrega, se aplicó
++el posicionamiento final con la etiqueta "Nuevo" sobre la tarjeta de bicicletas
++eléctricas y el botón fijo de WhatsApp, además de revisar el sitio en DevTools
++y con teclado antes del lanzamiento (MiniReto 12).
++
++Lo que mejoraría en una próxima iteración: añadir una API real de reservas,
++mostrar un mapa embebido, mejorar la experiencia del formulario con mensajes
++de éxito y gestionar la publicación desde un flujo de despliegue con credenciales
++de GitHub y una release formal. La URL verificada de GitHub Pages del sitio es:
++https://nani-acev.github.io/rueda-libre/
+
+MiniReto 12: lanzamiento Rueda Libre v1.0
+
+Resumen de construccion de la semana
+
+1. Kilometro 0: se preparo el repositorio, la estructura de carpetas, el
+   documento base de inicio y esta bitacora.
+2. La vitrina: se organizo el contenido de inicio con informacion del negocio,
+   servicios, listas, imagenes y enlaces.
+3. Tarifas claras: se crearon las tablas de alquiler y recorridos y se
+   conectaron las paginas con rutas relativas.
+4. Sitio navegable v0.1: se incorporaron reservas, menu entre las paginas y
+   pies de pagina compartidos.
+5. Estructura con significado: las tres paginas se ordenaron con regiones
+   semanticas y jerarquia de encabezados.
+6. Formulario: se agregaron datos del cliente, seleccion del alquiler y
+   confirmacion con controles etiquetados y agrupados.
+7. Validacion y teclado: se configuraron restricciones nativas y se probaron
+   los limites de los campos, el foco y la navegacion por teclado.
+8. Accesibilidad y publicacion inicial: se revisaron alternativas, tablas,
+   enlace para saltar al contenido, foco visible y contraste de la paleta.
+9. Identidad visual: se centralizaron colores, tipografias y espaciado en
+   variables, y se conecto la hoja externa a las tres paginas.
+10. Navegacion e interaccion: se estandarizaron estados activo, hover y foco
+    para menu, enlaces y botones, manteniendo visible la pagina actual.
+11. Modelo de caja: se aplico border-box; se ordenaron contenedor, tarjetas,
+    tablas y formulario. La tarjeta paso de 295px con content-box a 245px con
+    border-box en la medicion registrada arriba.
+12. Lanzamiento: se agrego una tarjeta de bicicletas electricas con etiqueta
+    posicionada "Nuevo", el acceso fijo a WhatsApp, una hoja CSS organizada
+    por secciones y la verificacion final de las tres paginas.
+
+Pruebas finales y decisiones
+
+- La etiqueta Nuevo usa posicion relativa en la tarjeta y posicion absoluta
+  en la esquina superior derecha; no participa en el flujo del contenido.
+- WhatsApp aparece como enlace visible, enfocable y fijo en la esquina
+  inferior derecha en las tres paginas. Abre https://wa.me/573000000000 en otra
+  pestana. El espacio inferior del documento evita que cubra el pie.
+- En viewport movil de 360px, las tres paginas no presentan desbordamiento
+  horizontal; las imagenes locales cargaron correctamente.
+- Se recorrio la navegacion de inicio con Tab desde el enlace para saltar al
+  contenido. El formulario conserva validacion nativa y los campos empiezan
+  invalidos mientras faltan datos requeridos.
+- En las paginas locales no se detectaron respuestas de error ni solicitudes
+  fallidas durante la comprobacion del navegador. La web publica ya tenia
+  activo el despliegue de GitHub Pages y se comprobo la URL del proyecto.
+- Encabezado, menu, botones y pie comparten la misma hoja de estilos. El menu
+  conserva el indicador de pagina activa; los textos de cada pagina siguen
+  siendo propios de su contenido.
+
+Cierre y mejoras siguientes
+
+URL de GitHub Pages: https://nani-acev.github.io/rueda-libre/
+Version: v1.0.
+
+El formulario es estatico: valida los datos en el navegador, pero todavia no
+guarda ni envia reservas a un servicio. Como siguiente mejora integraria un
+backend seguro de reservas, confirmacion al cliente y disponibilidad real.
+Tambien confirmaria que el numero de WhatsApp sea el canal definitivo,
+probaria el sitio en dispositivos reales y mantendria al dia las tarifas,
+fechas y textos de servicio.
+
+MiniReto 9: distribucion con Flexbox
+
+En el encabezado, el nombre del negocio acompana al logo a la izquierda y el
+menu queda al extremo derecho, centrado verticalmente. La lista usa Flexbox,
+gap para separar los enlaces y flex-wrap para que puedan pasar a otra linea.
+En el pie, marca, contacto y horario forman tres bloques en fila, alineados
+por arriba y separados uniformemente.
+
+Prueba al estrechar poco a poco la ventana: en pantallas anchas el encabezado
+mantiene la marca y el menu en extremos opuestos y el pie conserva sus tres
+bloques en fila. Cuando el ancho deja de alcanzar, los enlaces del menu bajan
+a otra linea; al reducir mas la ventana, la marca queda en su propia linea y
+el pie cambia a una columna en pantallas estrechas. El contenido se adapta
+sin desbordarse.
+
+MiniReto 10: cuadricula adaptable para la flota
+
+En inicio agregue siete tarjetas para la flota. La cuadrícula usa Grid con
+auto-fit y minmax, de modo que agrega o quita columnas según el ancho sin
+necesitar media queries. Cada tarjeta usa Flexbox en columna y conserva
+relleno, borde y esquinas redondeadas; el enlace "Reservar" queda al final,
+alineado con los de las otras tarjetas de su fila.
+
+Prueba en modo dispositivo de DevTools (ancho del viewport):
+
+Ancho | Columnas visibles
+------|------------------
+1280 px | 4
+900 px  | 3
+500 px  | 1
+
+Agregué Tándem como séptimo modelo y comprobé que se acomoda en la cuadrícula
+sin cambiar las reglas CSS.
+
+MiniReto 11: elegir Grid o Flexbox para los layouts
+
+- Portada (inicio): Grid en dos columnas con unidades fr para ubicar texto e
+  imagen en dos dimensiones; align-items centra el contenido verticalmente.
+- Galería "Nuestras rutas": Grid con repeat() y tres columnas porque organiza
+  tarjetas tanto en filas como en columnas, manteniendo el espacio entre ellas.
+- Reservas: Grid con columnas 2fr y 1fr para distribuir el formulario y el
+  bloque de contacto/horario en la proporción del boceto; en móvil pasa a una.
+- Fila del formulario: Grid con dos columnas iguales para alinear documento y
+  celular en una fila; en pantallas estrechas se apilan.
+- Encabezado: Flexbox porque marca y menú se distribuyen en una sola dimensión,
+  con align-items para centrarlos verticalmente y justify-content para
+  separarlos.
+- Pie: Flexbox porque sus bloques se distribuyen en una dimensión; gap y
+  justify-content los separan y align-items los alinea por arriba.
+
+MiniReto 12: estilos mobile-first y pruebas responsive
+
+Los estilos base describen la vista móvil en una columna; los layouts de
+portada, rutas, reservas, encabezado y pie cambian desde 768 px. A partir de
+1200 px se amplía el espacio de contenido y la portada da más ancho a la
+imagen. Las imágenes son fluidas y no superan el ancho de su contenedor.
+
+Problemas encontrados en las pruebas y soluciones:
+- En 360 px los enlaces del menú ocupaban dos filas bajo la marca; reduje la
+  separación entre enlaces para que quepan en una, y mantuve marca arriba y
+  menú centrado debajo. Desde 768 px se distribuyen en una fila horizontal.
+- La galería de tres rutas y las columnas 2:1 de reservas apretaban el
+  contenido móvil; ahora comienzan en una columna y pasan a Grid desde tablet.
+- Las tablas de tarifas, especialmente la de cinco columnas, desbordaban o
+  reducían demasiado sus textos, y el título de la tabla quedaba angosto al
+  cambiar su presentación; en móvil cada fila se presenta como ficha, el
+  título ocupa el ancho completo y desde 768 px vuelve la tabla tradicional.
+
+Pruebas con modo dispositivo de DevTools:
+- 360 px: portada, rutas, reservas y formulario en una columna; tablas en
+  fichas; no hay desbordamiento horizontal.
+- 768 px: encabezado y pie en fila, portada en dos columnas, rutas en tres,
+  reservas en proporción 2:1 y tablas tradicionales.
+- 1280 px: mismos layouts de escritorio con contenido más ancho y portada
+  equilibrada hacia la imagen; no hay imágenes fuera de sus contenedores.
+
+Versión objetivo: v1.5. URL de GitHub Pages:
+https://nani-acev.github.io/rueda-libre/
+
+Prueba comparativa: catálogo de flota con Bootstrap 5.3
+
+Tiempo invertido: 1 minuto y 55 segundos, medidos desde el inicio del
+cronómetro hasta terminar la implementación y la comprobación responsive.
+
+La versión propia resuelve la distribución de la flota en 5 líneas de CSS:
+el bloque #flota define Grid, columnas auto-fit/minmax y el espacio entre
+tarjetas. En esta prueba no agregué CSS propio: la grilla utiliza 7 clases
+distintas (container, row, g-4, col-12, col-sm-6, col-lg-4 y col-xl-3),
+con 31 usos en total al contar las clases repetidas en las siete tarjetas.
+
+Bootstrap resolvió sin escribir reglas de distribución el contenedor
+centrado, los gutters y el cambio responsive de una columna a dos, tres y
+cuatro. También reutilicé sus clases de tarjetas y botones. En la prueba con
+viewport de 375, 768, 1024 y 1280 px se observaron respectivamente 1, 2, 3 y
+4 columnas; los archivos CSS y JavaScript del CDN respondieron con estado 200.
+
+El control perdido es el ajuste visual fino desde CSS propio: por ejemplo,
+las imágenes ya no tienen una altura uniforme de 12 rem ni el recorte
+object-fit: cover de la versión original. El HTML también queda acoplado a
+las clases y los valores predeterminados de Bootstrap, y la hoja depende de
+la disponibilidad del CDN.
+
+MiniReto: beneficios y llamada a la acción con utilidades Bootstrap
+
+Consulté la documentación oficial de Bootstrap 5.3:
+- gap-4: deja un espacio de 1.5 rem entre elementos de una grilla o flexbox.
+  https://getbootstrap.com/docs/5.3/utilities/spacing/
+- fs-5: cambia el tamaño de letra al tamaño de un encabezado h5, sin cambiar
+  por sí solo el peso ni la altura de línea.
+  https://getbootstrap.com/docs/5.3/utilities/text/
+- text-bg-success: aplica el fondo de tema success y un color de texto
+  contrastante para esa combinación.
+  https://getbootstrap.com/docs/5.3/utilities/colors/
+- d-none: oculta el elemento en todos los anchos; combinado con d-md-block,
+  permite mostrar la imagen desde el breakpoint md.
+  https://getbootstrap.com/docs/5.3/utilities/display/
+- flex-md-row: desde md distribuye los elementos flex en fila; se combina con
+  flex-column para mantenerlos apilados en celulares.
+  https://getbootstrap.com/docs/5.3/utilities/flex/
+
+Los beneficios usan cuatro columnas desde xl y se apilan de forma responsive.
+La franja pasa de columna a fila desde md, y la imagen decorativa solo aparece
+desde ese breakpoint. El verde success y el fondo warning con texto oscuro
+siguen la intención de color y contraste del mapa de la marca; son los tonos
+de Bootstrap, no una reproducción exacta de los colores de marca, porque esta
+prueba no agrega CSS propio.
+
+Integración de Bootstrap en Inicio
+
+Se agregó Bootstrap 5.3.3 antes de css/styles.css y su bundle al final de
+index.html. La portada, las rutas, la flota, los beneficios, servicios y la
+lista de quiénes somos ahora usan filas, columnas y utilidades Bootstrap. Se
+conservaron las fuentes Montserrat y Open Sans, y la paleta propia en las
+reglas de styles.css; las reglas de distribución propias de esas secciones se
+retiraron. Las tarjetas conservan recorte uniforme de imágenes.
+
+Conflictos revisados en DevTools (Styles/Computed) y solución
+
+1. Tipografía y color de texto: Bootstrap define su familia de sistema y el
+   color de texto base. styles.css se carga después y vuelve a declarar Open
+   Sans y azul noche en body, además de Montserrat en los encabezados. El valor
+   calculado comprobado es Open Sans y rgb(20, 33, 61), de modo que se mantiene
+   la identidad sin !important.
+2. Color de enlaces: el color azul predeterminado de Bootstrap entra en
+   conflicto con el verde de marca. La regla propia a, cargada después, resuelve
+   la cascada; el color calculado de un enlace normal es rgb(30, 122, 79). Los
+   botones conservan el verde, el texto blanco y sus estados de interacción.
+3. Ancho y márgenes: el max-width propio de main podía limitar el contenedor
+   responsive de Bootstrap. Se quitó la regla especial .inicio main y se añadió
+   la clase container a main; las utilidades mb-* controlan el espaciado de los
+   encabezados y secciones migrados. En Styles, container y mb-4 aplican el
+   ancho y margen de Bootstrap sin añadir !important al CSS propio.
+
+Prueba responsive de Inicio en modo dispositivo
+
+Ancho | Portada | Rutas | Flota | Beneficios | Desbordamiento horizontal
+------|---------|-------|-------|------------|--------------------------
+360 px | 1 columna | 1 columna | 1 columna | 1 columna | No
+768 px | 2 columnas | 3 columnas | 2 columnas | 2 columnas | No
+1280 px | 2 columnas | 3 columnas | 4 columnas | 4 columnas | No
+
+Migración del sitio completo y comparativa v2.0-beta
+
+Migré tarifas y reservas a Bootstrap 5.3.3, manteniendo styles.css después
+del CSS de Bootstrap en las tres páginas. En tarifas, las dos tablas quedan
+en la columna de 8/12 y la información complementaria en la columna de 4/12
+desde lg. Se conserva la presentación móvil en fichas de .tabla-responsiva.
+En reservas, formulario e información de contacto usan columnas 8/4 desde
+md; documento y celular usan columnas iguales desde md. Se conservaron los
+13 atributos nativos de validación que ya tenía el formulario.
+
+La navegación, el pie, las secciones y las filas de campos usan utilidades
+Bootstrap. styles.css ya no distribuye la portada, rutas, flota, beneficios,
+servicios, navegación, pie ni el formulario; mantiene identidad de marca,
+componentes, foco, controles y el formato responsive propio de las tablas.
+La página pruebas/catalogo-bootstrap.html conserva las siete bicicletas,
+los cuatro beneficios y el bundle usados en la prueba aislada.
+
+Comparación medida de styles.css:
+- v1.5: 808 líneas en el commit de GitHub b86e1db
+  (https://github.com/Nani-Acev/rueda-libre/commit/b86e1dbfa6267008a7caadd63ca936953c50454c).
+- v2.0-beta local: 411 líneas. Reducción de 397 líneas (49,1 %), contando
+  líneas físicas; se mantuvo el CSS particular necesario para las tablas.
+
+Tiempo de trabajo:
+- v1.5: no hay cronometraje registrado en su commit ni en la bitácora. No es
+  posible comparar honestamente el tiempo de ambas versiones. El registro de
+  1 min 55 s en esta bitácora corresponde solo al prototipo del catálogo, no
+  al desarrollo completo de v1.5.
+- v2.0-beta: 9 min 38 s desde la solicitud (08:08:49) hasta la verificación
+  final de estilos y responsive (08:18:27, UTC-05:00); no incluye el commit,
+  el push ni la publicación.
+
+Conflictos y resolución con DevTools:
+1. Los valores predeterminados de Bootstrap para fuente y texto competían con
+   la identidad de Rueda Libre. Al cargar styles.css después, los valores
+   calculados vuelven a Open Sans, Montserrat y azul noche.
+2. El color de .nav-link de Bootstrap competía con la paleta de marca. Las
+   reglas .navbar .nav-link y .navbar .nav-link.active, en la hoja posterior,
+   conservan el contraste sobre azul noche y el indicador de página actual.
+3. .form-control y .form-select aportan bordes, fondos y foco predeterminados.
+   Las reglas de controles de styles.css, después de Bootstrap, mantienen el
+   fondo crema, el borde gris asfalto y el contorno verde; se verificó el borde
+   calculado rgb(91, 100, 112). No se usó !important.
+
+Pruebas en navegador:
+- Inicio, Tarifas y Reservas: 360, 768 y 1280 px; ningún ancho presentó
+  desbordamiento horizontal.
+- A 1280 px, Tarifas mostró tablas e información en columnas 8/4; a 768 px,
+  Reservas mostró formulario y contacto en columnas 8/4. En móvil se apilaron.
+- En el formulario se comprobaron rechazos de documento, celular, correo,
+  fecha fuera de rango, cantidad máxima y valor decimal, y aceptación de
+  documento y celular válidos. Los 9 campos required siguen presentes.
+- Bootstrap CSS y bundle cargaron en las tres páginas; styles.css fue la
+  última hoja de estilos.
+
+Ventajas: el layout adaptable estándar queda expresado en clases del marcado
+y se retiraron 397 líneas netas frente a la hoja de v1.5. Las columnas y los
+breakpoints se pueden revisar y ajustar sin mantener otra cuadrícula propia.
+Desventajas: el HTML queda más acoplado a Bootstrap y el CDN es una dependencia;
+la tabla móvil todavía necesita reglas específicas y la cascada requiere
+atención para conservar marca y controles.
+
+Conclusión: Bootstrap reduce claramente el CSS de distribución medido
+(49,1 %) y facilita aplicar layouts consistentes en las tres páginas. No se
+puede afirmar con estos datos que redujo el tiempo frente a v1.5 porque aquella
+versión no se cronometró. El bundle local queda listo para v2.0-beta, pero la
+publicación en GitHub Pages depende de poder hacer push al repositorio.
+
+Actualización de navegación y llamadas a la acción:
+- Las tres páginas usan navbar-expand-lg con un único destino navbarNav para
+  toggler y collapse; active y aria-current="page" identifican la página actual.
+- Cada página carga una sola vez bootstrap.bundle.min.js al final del body.
+- Las acciones de reserva usan btn-success; las de consulta y ubicación,
+  btn-outline-success. Se aplicaron btn-sm a las acciones de tarjetas y
+  btn-lg a la reserva principal.
+- Se verificó el breakpoint de 992 px: el toggler aparece por debajo y los
+  enlaces se muestran desde 992 px. El menú responde a clic de mouse y
+  navegación por teclado en viewport móvil.
+
+MiniReto 11 - Validación, alerta y políticas:
+- El formulario de reservas utiliza needs-validation y novalidate con el script
+  oficial de validación de Bootstrap, manteniendo required, minlength,
+  maxlength, pattern, min, max y step para la validación del navegador.
+- Cada campo obligatorio presenta invalid-feedback con indicaciones concretas;
+  la alerta descartable recuerda llevar el documento original.
+- El modal accesible presenta las cinco políticas y se puede cerrar desde sus
+  botones o con Escape. Los controles Bootstrap conservan crema, azul noche y
+  borde gris de la identidad visual sin anular sus estados de validación.
+
+MiniReto 9 - Cards y promociones:
+- La flota y las rutas se presentan con las cards de Bootstrap dentro de sus
+  filas; h-100 mantiene la altura uniforme de las tarjetas de cada fila.
+- El carrusel de inicio muestra tres promociones con imagen, texto alternativo,
+  indicadores y controles anterior/siguiente con nombre accesible. Avanza
+  automáticamente cada cinco segundos y conserva el foco/operación por teclado.
+- El CSS propio se limita a la altura de las imágenes y a la legibilidad de los
+  pies del carrusel en móvil; las reglas de tarjeta que siguen en uso se
+  mantienen, sin dejar reglas de tarjetas obsoletas.
+
+MiniReto 12 - Rueda Libre v2.0 con identidad propia
+
+Personalización:
+- En css/styles.css, cargado después de Bootstrap 5.3.3, se definieron los
+  tokens --bs-primary y --bs-primary-rgb, --bs-body-font-family, colores de
+  enlaces y radio de borde. Las utilidades text-primary y bg-primary usan
+  Verde Ruta; el texto de bg-primary se define blanco para mantener contraste.
+- Los botones primarios usan Verde Ruta y pasan a Naranja Pedal con texto azul
+  noche en hover/active. Se agregó .btn-naranja como variante complementaria.
+- Se añadieron .portada, .titulo-seccion, .beneficio-icono y .pie-marca, sin
+  alterar clases de Bootstrap. Los pies usan container > row > columnas.
+- Bootstrap Icons 1.11.3 se incorporó por CDN en inicio, tarifas y reservas:
+  navbar, contacto, beneficios y WhatsApp. Los iconos son decorativos
+  (aria-hidden="true"); toggler, carrusel, cierres y WhatsApp conservan nombres
+  accesibles mediante aria-label.
+- Se mantuvo Bootstrap CSS sin modificar, una hoja propia posterior al
+  framework, un solo bundle por página y no se añadieron reglas !important.
+
+Contraste comprobado (WCAG AA texto normal, razón mínima 4.5:1):
+Combinación                              | Razón
+-----------------------------------------|------
+Blanco sobre Verde Ruta                  | 5.31:1
+Verde Ruta sobre Crema                   | 4.93:1
+Verde Ruta sobre blanco                  | 5.31:1
+Azul Noche sobre Naranja Pedal           | 7.20:1
+Azul Noche sobre Crema                   | 14.83:1
+Azul Noche sobre blanco                  | 15.97:1
+Blanco sobre Azul Noche                  | 15.97:1
+Gris Asfalto sobre Crema                 | 5.57:1
+Gris Asfalto sobre blanco                | 6.00:1
+Rojo de invalid-feedback sobre Crema     | 6.03:1
+
+Pruebas finales:
+- En navegador, inicio, tarifas y reservas se comprobaron a 360, 768 y 1280
+  px. No hubo desbordamiento horizontal; CSS propio fue la última hoja y el
+  bundle apareció exactamente una vez por página.
+- Se verificaron los colores calculados de btn-primary, btn-naranja, enlaces
+  y bg-primary; Bootstrap Icons cargó y los iconos encontrados estaban
+  marcados aria-hidden.
+- En el ancho móvil, el menú colapsable abrió con Enter y sus enlaces quedaron
+  disponibles para la navegación por teclado.
+- Capturas comparativas de Inicio, tomadas a 1440 x 1000 px:
+  img/capturas/antes.png (beta) y img/capturas/despues.png (identidad nueva).
+- Se verificó el parseo de las tres páginas HTML. El archivo de Bootstrap no
+  se modificó.
+
+Cierre de semana / estado de publicación:
+- Integrados en las tres páginas los componentes de MiniRetos 1 a 11 y la
+  personalización visual de MiniReto 12. La versión local queda preparada como
+  Rueda Libre v2.0 y las capturas quedan en img/capturas/.
+- No se creó un commit de lanzamiento ni se publicó GitHub Pages: este
+  directorio no contiene metadatos Git (.git) ni un remoto configurado. No se
+  inventó un historial por MiniReto ni una URL de publicación; hacen falta el
+  repositorio remoto y permisos de push para completar esa parte.
