@@ -13,6 +13,15 @@
     --espacio-medio: 1rem;
     --espacio-grande: 1.5rem;
     --espacio-extra-grande: 2rem;
+    --bs-primary: var(--verde-ruta);
+    --bs-primary-rgb: 30, 122, 79;
+    --bs-body-color: var(--azul-noche);
+    --bs-body-font-family: var(--fuente-texto);
+    --bs-link-color: var(--verde-ruta);
+    --bs-link-color-rgb: 30, 122, 79;
+    --bs-link-hover-color: var(--azul-noche);
+    --bs-link-hover-color-rgb: 20, 33, 61;
+    --bs-border-radius: 0.75rem;
 }
 
 body {
@@ -34,6 +43,21 @@ h3 {
 
 header h1 {
     font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.titulo-seccion {
+    margin-bottom: var(--espacio-grande);
+    text-align: center;
+}
+
+.titulo-seccion::after {
+    display: block;
+    width: 3.5rem;
+    height: 0.2rem;
+    margin: 0.65rem auto 0;
+    border-radius: 1rem;
+    background-color: var(--naranja-pedal);
+    content: "";
 }
 
 a {
@@ -113,6 +137,10 @@ mark {
     color: var(--azul-noche);
     text-decoration: underline;
     text-underline-offset: 0.2em;
+}
+
+.navbar .navbar-toggler:focus-visible {
+    outline-color: var(--naranja-pedal);
 }
 
 /* Componentes compartidos */
@@ -215,6 +243,36 @@ th {
     height: 13rem;
 }
 
+.tarjeta-servicio img,
+.imagen-ruta,
+.imagen-flota,
+#carouselPromociones .carousel-item img,
+.presentacion img {
+    object-fit: contain;
+    background-color: var(--crema);
+}
+
+.portada {
+    border: 1px solid rgb(30 122 79 / 18%);
+    background: linear-gradient(135deg, var(--blanco), var(--crema));
+}
+
+.acciones-portada {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espacio-pequeno);
+}
+
+.acciones-portada .btn {
+    display: flex;
+    min-height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.55rem;
+    font-size: 0.875rem;
+    line-height: 1.25;
+}
+
 .imagen-ruta,
 .imagen-flota {
     height: 12rem;
@@ -222,6 +280,15 @@ th {
 
 #carouselPromociones .carousel-item img {
     height: 22rem;
+}
+
+#carouselPromociones .carousel-control-prev-icon,
+#carouselPromociones .carousel-control-next-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background-color: var(--verde-ruta);
+    background-size: 55%;
 }
 
 #carouselPromociones .carousel-caption {
@@ -256,6 +323,12 @@ th {
     box-shadow: 0 0.25rem 1rem rgb(20 33 61 / 8%);
 }
 
+.beneficio-icono {
+    color: var(--verde-ruta);
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
 .beneficio-etiqueta {
     background: var(--verde-ruta);
     color: var(--blanco);
@@ -283,6 +356,44 @@ th {
     font-weight: 600;
 }
 
+.btn-primary {
+    --bs-btn-color: var(--blanco);
+    --bs-btn-bg: var(--verde-ruta);
+    --bs-btn-border-color: var(--verde-ruta);
+    --bs-btn-hover-color: var(--azul-noche);
+    --bs-btn-hover-bg: var(--naranja-pedal);
+    --bs-btn-hover-border-color: var(--naranja-pedal);
+    --bs-btn-active-color: var(--azul-noche);
+    --bs-btn-active-bg: var(--naranja-pedal);
+    --bs-btn-active-border-color: var(--naranja-pedal);
+    --bs-btn-focus-shadow-rgb: 30, 122, 79;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--verde-ruta);
+    --bs-btn-border-color: var(--verde-ruta);
+    --bs-btn-hover-color: var(--azul-noche);
+    --bs-btn-hover-bg: var(--naranja-pedal);
+    --bs-btn-hover-border-color: var(--naranja-pedal);
+    --bs-btn-active-color: var(--azul-noche);
+    --bs-btn-active-bg: var(--naranja-pedal);
+    --bs-btn-active-border-color: var(--naranja-pedal);
+    --bs-btn-focus-shadow-rgb: 30, 122, 79;
+}
+
+.btn-naranja {
+    --bs-btn-color: var(--azul-noche);
+    --bs-btn-bg: var(--naranja-pedal);
+    --bs-btn-border-color: var(--naranja-pedal);
+    --bs-btn-hover-color: var(--blanco);
+    --bs-btn-hover-bg: var(--verde-ruta);
+    --bs-btn-hover-border-color: var(--verde-ruta);
+    --bs-btn-active-color: var(--blanco);
+    --bs-btn-active-bg: var(--verde-ruta);
+    --bs-btn-active-border-color: var(--verde-ruta);
+    --bs-btn-focus-shadow-rgb: 243, 154, 43;
+}
+
 .btn-success {
     --bs-btn-color: var(--blanco);
     --bs-btn-bg: var(--verde-ruta);
@@ -293,6 +404,7 @@ th {
     --bs-btn-active-color: var(--azul-noche);
     --bs-btn-active-bg: var(--naranja-pedal);
     --bs-btn-active-border-color: var(--naranja-pedal);
+    --bs-btn-focus-shadow-rgb: 30, 122, 79;
 }
 
 .btn-outline-success {
@@ -304,6 +416,11 @@ th {
     --bs-btn-active-color: var(--azul-noche);
     --bs-btn-active-bg: var(--naranja-pedal);
     --bs-btn-active-border-color: var(--naranja-pedal);
+    --bs-btn-focus-shadow-rgb: 30, 122, 79;
+}
+
+.bg-primary {
+    color: var(--blanco);
 }
 
 small,
@@ -337,25 +454,47 @@ dt {
     z-index: 2;
     width: 3.75rem;
     height: 3.75rem;
-    border: 2px solid var(--blanco);
+    border: 2px solid var(--azul-noche);
     border-radius: 50%;
-    background-color: #25D366;
-    color: var(--blanco);
+    background-color: var(--naranja-pedal);
+    color: var(--azul-noche);
     text-decoration: none;
     box-shadow: 0 0.25rem 0.875rem rgb(20 33 61 / 25%);
-    transition: transform 180ms ease, background-color 180ms ease;
+    transition: transform 180ms ease;
 }
 
-.enlace-whatsapp svg {
+.enlace-whatsapp svg,
+.enlace-whatsapp .bi {
+    display: block;
     width: 1.8rem;
     height: 1.8rem;
+    flex: 0 0 1.8rem;
+}
+
+.enlace-whatsapp .bi {
+    font-size: 1.8rem;
+    line-height: 1;
 }
 
 .enlace-whatsapp:hover,
 .enlace-whatsapp:focus {
     transform: scale(1.08);
-    background-color: #1fba59;
+    background-color: var(--naranja-pedal);
+    color: var(--azul-noche);
+}
+
+.pie-marca {
+    border-radius: 0.75rem;
+    background-color: var(--azul-noche);
     color: var(--blanco);
+}
+
+.pie-marca h2 {
+    color: var(--blanco);
+}
+
+.pie-marca a {
+    color: var(--naranja-pedal);
 }
 
 fieldset {
