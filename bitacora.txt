@@ -596,6 +596,7 @@ MiniReto 9 - Cards y promociones:
 - El CSS propio se limita a la altura de las imágenes y a la legibilidad de los
   pies del carrusel en móvil; las reglas de tarjeta que siguen en uso se
   mantienen, sin dejar reglas de tarjetas obsoletas.
+<<<<<<< HEAD
 
 MiniReto 12 - Rueda Libre v2.0 con identidad propia
 
@@ -651,3 +652,5 @@ Cierre de semana / estado de publicación:
   directorio no contiene metadatos Git (.git) ni un remoto configurado. No se
   inventó un historial por MiniReto ni una URL de publicación; hacen falta el
   repositorio remoto y permisos de push para completar esa parte.
+=======
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8

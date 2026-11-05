@@ -13,6 +13,7 @@
     --espacio-medio: 1rem;
     --espacio-grande: 1.5rem;
     --espacio-extra-grande: 2rem;
+<<<<<<< HEAD
     --bs-primary: var(--verde-ruta);
     --bs-primary-rgb: 30, 122, 79;
     --bs-body-color: var(--azul-noche);
@@ -22,6 +23,8 @@
     --bs-link-hover-color: var(--azul-noche);
     --bs-link-hover-color-rgb: 20, 33, 61;
     --bs-border-radius: 0.75rem;
+=======
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 }
 
 body {
@@ -45,6 +48,7 @@ header h1 {
     font-size: clamp(2rem, 5vw, 3rem);
 }
 
+<<<<<<< HEAD
 .titulo-seccion {
     margin-bottom: var(--espacio-grande);
     text-align: center;
@@ -60,6 +64,8 @@ header h1 {
     content: "";
 }
 
+=======
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 a {
     color: var(--verde-ruta);
     text-decoration-color: var(--verde-ruta);
@@ -139,10 +145,13 @@ mark {
     text-underline-offset: 0.2em;
 }
 
+<<<<<<< HEAD
 .navbar .navbar-toggler:focus-visible {
     outline-color: var(--naranja-pedal);
 }
 
+=======
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 /* Componentes compartidos */
 table {
     width: 100%;
@@ -243,6 +252,7 @@ th {
     height: 13rem;
 }
 
+<<<<<<< HEAD
 .tarjeta-servicio img,
 .imagen-ruta,
 .imagen-flota,
@@ -273,6 +283,8 @@ th {
     line-height: 1.25;
 }
 
+=======
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 .imagen-ruta,
 .imagen-flota {
     height: 12rem;
@@ -282,6 +294,7 @@ th {
     height: 22rem;
 }
 
+<<<<<<< HEAD
 #carouselPromociones .carousel-control-prev-icon,
 #carouselPromociones .carousel-control-next-icon {
     width: 2.75rem;
@@ -291,6 +304,8 @@ th {
     background-size: 55%;
 }
 
+=======
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 #carouselPromociones .carousel-caption {
     right: 12%;
     left: 12%;
@@ -323,12 +338,15 @@ th {
     box-shadow: 0 0.25rem 1rem rgb(20 33 61 / 8%);
 }
 
+<<<<<<< HEAD
 .beneficio-icono {
     color: var(--verde-ruta);
     font-size: 1.75rem;
     line-height: 1;
 }
 
+=======
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 .beneficio-etiqueta {
     background: var(--verde-ruta);
     color: var(--blanco);
@@ -356,6 +374,7 @@ th {
     font-weight: 600;
 }
 
+<<<<<<< HEAD
 .btn-primary {
     --bs-btn-color: var(--blanco);
     --bs-btn-bg: var(--verde-ruta);
@@ -394,6 +413,8 @@ th {
     --bs-btn-focus-shadow-rgb: 30, 122, 79;
 }
 
+=======
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 .btn-success {
     --bs-btn-color: var(--blanco);
     --bs-btn-bg: var(--verde-ruta);
@@ -404,7 +425,10 @@ th {
     --bs-btn-active-color: var(--azul-noche);
     --bs-btn-active-bg: var(--naranja-pedal);
     --bs-btn-active-border-color: var(--naranja-pedal);
+<<<<<<< HEAD
     --bs-btn-focus-shadow-rgb: 30, 122, 79;
+=======
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 }
 
 .btn-outline-success {
@@ -416,11 +440,14 @@ th {
     --bs-btn-active-color: var(--azul-noche);
     --bs-btn-active-bg: var(--naranja-pedal);
     --bs-btn-active-border-color: var(--naranja-pedal);
+<<<<<<< HEAD
     --bs-btn-focus-shadow-rgb: 30, 122, 79;
 }
 
 .bg-primary {
     color: var(--blanco);
+=======
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 }
 
 small,
@@ -454,26 +481,40 @@ dt {
     z-index: 2;
     width: 3.75rem;
     height: 3.75rem;
+<<<<<<< HEAD
     border: 2px solid var(--azul-noche);
     border-radius: 50%;
     background-color: var(--naranja-pedal);
     color: var(--azul-noche);
+=======
+    border: 2px solid var(--blanco);
+    border-radius: 50%;
+    background-color: #25D366;
+    color: var(--blanco);
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
     text-decoration: none;
     box-shadow: 0 0.25rem 0.875rem rgb(20 33 61 / 25%);
     transition: transform 180ms ease, background-color 180ms ease;
 }
 
+<<<<<<< HEAD
 .enlace-whatsapp .bi {
     display: block;
     width: 1.8rem;
     height: 1.8rem;
     font-size: 1.8rem;
     line-height: 1;
+=======
+.enlace-whatsapp svg {
+    width: 1.8rem;
+    height: 1.8rem;
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 }
 
 .enlace-whatsapp:hover,
 .enlace-whatsapp:focus {
     transform: scale(1.08);
+<<<<<<< HEAD
     background-color: var(--naranja-pedal);
     color: var(--azul-noche);
 }
@@ -492,6 +533,12 @@ dt {
     color: var(--naranja-pedal);
 }
 
+=======
+    background-color: #1fba59;
+    color: var(--blanco);
+}
+
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 fieldset {
     border: 1px solid var(--gris-asfalto);
 }
@@ -536,10 +583,13 @@ textarea:not(.form-control):focus {
     box-shadow: 0 0 0 0.25rem rgb(30 122 79 / 25%);
 }
 
+<<<<<<< HEAD
 .formulario-reserva .invalid-feedback {
     color: #B02A37;
 }
 
+=======
+>>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 @media (min-width: 48rem) {
     /* Las tablas conservan su formato propio en pantallas medianas y grandes. */
     .tabla-responsiva {
