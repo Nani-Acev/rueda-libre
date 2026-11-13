@@ -1,9 +1,11 @@
-
 :root {
     color-scheme: light;
     --verde-ruta: #1E7A4F;
+    --verde-ruta-rgb: 30, 122, 79;
     --naranja-pedal: #F39A2B;
+    --naranja-pedal-rgb: 243, 154, 43;
     --azul-noche: #14213D;
+    --azul-noche-rgb: 20, 33, 61;
     --crema: #FAF6EF;
     --gris-asfalto: #5B6470;
     --blanco: #FFFFFF;
@@ -13,18 +15,18 @@
     --espacio-medio: 1rem;
     --espacio-grande: 1.5rem;
     --espacio-extra-grande: 2rem;
-<<<<<<< HEAD
+
+    /* Tokens de marca sobrescribiendo variables de Bootstrap 5.3 */
     --bs-primary: var(--verde-ruta);
-    --bs-primary-rgb: 30, 122, 79;
+    --bs-primary-rgb: var(--verde-ruta-rgb);
+    --bs-secondary: var(--gris-asfalto);
+    --bs-body-bg: var(--crema);
     --bs-body-color: var(--azul-noche);
     --bs-body-font-family: var(--fuente-texto);
     --bs-link-color: var(--verde-ruta);
-    --bs-link-color-rgb: 30, 122, 79;
+    --bs-link-color-rgb: var(--verde-ruta-rgb);
     --bs-link-hover-color: var(--azul-noche);
-    --bs-link-hover-color-rgb: 20, 33, 61;
-    --bs-border-radius: 0.75rem;
-=======
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
+    --bs-border-radius: 0.5rem;
 }
 
 body {
@@ -37,7 +39,12 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
     color: var(--azul-noche);
     font-family: var(--fuente-titulos);
     font-weight: 700;
@@ -48,24 +55,6 @@ header h1 {
     font-size: clamp(2rem, 5vw, 3rem);
 }
 
-<<<<<<< HEAD
-.titulo-seccion {
-    margin-bottom: var(--espacio-grande);
-    text-align: center;
-}
-
-.titulo-seccion::after {
-    display: block;
-    width: 3.5rem;
-    height: 0.2rem;
-    margin: 0.65rem auto 0;
-    border-radius: 1rem;
-    background-color: var(--naranja-pedal);
-    content: "";
-}
-
-=======
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 a {
     color: var(--verde-ruta);
     text-decoration-color: var(--verde-ruta);
@@ -87,7 +76,7 @@ a:hover {
     position: absolute;
     top: -6.25rem;
     left: 1.5rem;
-    z-index: 1;
+    z-index: 1050;
     padding: var(--espacio-pequeno) var(--espacio-medio);
     background-color: var(--azul-noche);
     color: var(--blanco);
@@ -104,7 +93,17 @@ mark {
     color: var(--azul-noche);
 }
 
-/* Navegacion compartida */
+/* Identidad visual en utilidades de Bootstrap */
+.bg-primary {
+    background-color: var(--verde-ruta) !important;
+    color: var(--blanco);
+}
+
+.text-primary {
+    color: var(--verde-ruta) !important;
+}
+
+/* Navegacion compartida (MiniReto 9 y 12) */
 .navbar {
     background-color: var(--azul-noche);
 }
@@ -145,13 +144,39 @@ mark {
     text-underline-offset: 0.2em;
 }
 
-<<<<<<< HEAD
-.navbar .navbar-toggler:focus-visible {
-    outline-color: var(--naranja-pedal);
+/* Clases propias de identidad (MiniReto 12) */
+.portada {
+    background-color: var(--blanco);
+    border: 1px solid rgb(20 33 61 / 8%);
 }
 
-=======
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
+.titulo-seccion {
+    position: relative;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--naranja-pedal);
+    display: inline-block;
+}
+
+.beneficio-icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.5rem;
+    background-color: rgb(30 122 79 / 12%);
+    color: var(--verde-ruta);
+    font-size: 1.35rem;
+}
+
+.pie-marca {
+    background-color: var(--blanco);
+    border: 1px solid rgb(20 33 61 / 10%);
+    border-top: 4px solid var(--verde-ruta);
+    border-radius: 0.75rem;
+}
+
 /* Componentes compartidos */
 table {
     width: 100%;
@@ -159,7 +184,7 @@ table {
     border-collapse: collapse;
 }
 
-/* Presentación adaptable propia de las tablas de tarifas. */
+/* Presentacion adaptable propia de las tablas de tarifas */
 .tabla-responsiva {
     display: block;
     table-layout: auto;
@@ -190,6 +215,7 @@ table {
     display: grid;
     border: 1px solid var(--gris-asfalto);
     border-radius: 0.25rem;
+    background-color: var(--blanco);
     overflow: hidden;
 }
 
@@ -234,7 +260,9 @@ th {
     color: var(--blanco);
 }
 
-.tarjeta-servicio {
+.tarjeta-servicio,
+#flota .card,
+#rutas .card {
     padding: var(--espacio-grande);
     border: 1px solid rgb(20 33 61 / 8%);
     border-radius: 0.75rem;
@@ -243,7 +271,15 @@ th {
     transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.tarjeta-servicio:hover {
+#flota .card,
+#rutas .card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.tarjeta-servicio:hover,
+#flota .card:hover,
+#rutas .card:hover {
     transform: translateY(-0.2rem);
     box-shadow: 0 0.6rem 1.5rem rgb(20 33 61 / 14%);
 }
@@ -252,66 +288,23 @@ th {
     height: 13rem;
 }
 
-<<<<<<< HEAD
-.tarjeta-servicio img,
-.imagen-ruta,
-.imagen-flota,
-#carouselPromociones .carousel-item img,
-.presentacion img {
-    object-fit: contain;
-    background-color: var(--crema);
-}
-
-.portada {
-    border: 1px solid rgb(30 122 79 / 18%);
-    background: linear-gradient(135deg, var(--blanco), var(--crema));
-}
-
-.acciones-portada {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--espacio-pequeno);
-}
-
-.acciones-portada .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 2.5rem;
-    padding: 0.4rem 0.55rem;
-    font-size: 0.875rem;
-    line-height: 1.25;
-}
-
-=======
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 .imagen-ruta,
 .imagen-flota {
     height: 12rem;
+    background-color: var(--blanco);
 }
 
 #carouselPromociones .carousel-item img {
     height: 22rem;
+    background-color: var(--azul-noche);
 }
 
-<<<<<<< HEAD
-#carouselPromociones .carousel-control-prev-icon,
-#carouselPromociones .carousel-control-next-icon {
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 50%;
-    background-color: var(--verde-ruta);
-    background-size: 55%;
-}
-
-=======
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 #carouselPromociones .carousel-caption {
     right: 12%;
     left: 12%;
     padding: var(--espacio-medio);
     border-radius: 0.5rem;
-    background-color: rgb(20 33 61 / 85%);
+    background-color: rgb(20 33 61 / 88%);
     color: var(--blanco);
 }
 
@@ -338,15 +331,6 @@ th {
     box-shadow: 0 0.25rem 1rem rgb(20 33 61 / 8%);
 }
 
-<<<<<<< HEAD
-.beneficio-icono {
-    color: var(--verde-ruta);
-    font-size: 1.75rem;
-    line-height: 1;
-}
-
-=======
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
 .beneficio-etiqueta {
     background: var(--verde-ruta);
     color: var(--blanco);
@@ -370,12 +354,13 @@ th {
     font-weight: 600;
 }
 
+/* Botones de marca (MiniReto 9 y 12) */
 .btn {
     font-weight: 600;
 }
 
-<<<<<<< HEAD
-.btn-primary {
+.btn-primary,
+.btn-success {
     --bs-btn-color: var(--blanco);
     --bs-btn-bg: var(--verde-ruta);
     --bs-btn-border-color: var(--verde-ruta);
@@ -385,7 +370,20 @@ th {
     --bs-btn-active-color: var(--azul-noche);
     --bs-btn-active-bg: var(--naranja-pedal);
     --bs-btn-active-border-color: var(--naranja-pedal);
-    --bs-btn-focus-shadow-rgb: 30, 122, 79;
+    --bs-btn-focus-shadow-rgb: var(--verde-ruta-rgb);
+}
+
+.btn-outline-primary,
+.btn-outline-success {
+    --bs-btn-color: var(--verde-ruta);
+    --bs-btn-border-color: var(--verde-ruta);
+    --bs-btn-hover-color: var(--azul-noche);
+    --bs-btn-hover-bg: var(--naranja-pedal);
+    --bs-btn-hover-border-color: var(--naranja-pedal);
+    --bs-btn-active-color: var(--azul-noche);
+    --bs-btn-active-bg: var(--naranja-pedal);
+    --bs-btn-active-border-color: var(--naranja-pedal);
+    --bs-btn-focus-shadow-rgb: var(--verde-ruta-rgb);
 }
 
 .btn-naranja {
@@ -398,56 +396,7 @@ th {
     --bs-btn-active-color: var(--blanco);
     --bs-btn-active-bg: var(--verde-ruta);
     --bs-btn-active-border-color: var(--verde-ruta);
-    --bs-btn-focus-shadow-rgb: 243, 154, 43;
-}
-
-.btn-outline-primary {
-    --bs-btn-color: var(--verde-ruta);
-    --bs-btn-border-color: var(--verde-ruta);
-    --bs-btn-hover-color: var(--azul-noche);
-    --bs-btn-hover-bg: var(--naranja-pedal);
-    --bs-btn-hover-border-color: var(--naranja-pedal);
-    --bs-btn-active-color: var(--azul-noche);
-    --bs-btn-active-bg: var(--naranja-pedal);
-    --bs-btn-active-border-color: var(--naranja-pedal);
-    --bs-btn-focus-shadow-rgb: 30, 122, 79;
-}
-
-=======
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
-.btn-success {
-    --bs-btn-color: var(--blanco);
-    --bs-btn-bg: var(--verde-ruta);
-    --bs-btn-border-color: var(--verde-ruta);
-    --bs-btn-hover-color: var(--azul-noche);
-    --bs-btn-hover-bg: var(--naranja-pedal);
-    --bs-btn-hover-border-color: var(--naranja-pedal);
-    --bs-btn-active-color: var(--azul-noche);
-    --bs-btn-active-bg: var(--naranja-pedal);
-    --bs-btn-active-border-color: var(--naranja-pedal);
-<<<<<<< HEAD
-    --bs-btn-focus-shadow-rgb: 30, 122, 79;
-=======
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
-}
-
-.btn-outline-success {
-    --bs-btn-color: var(--verde-ruta);
-    --bs-btn-border-color: var(--verde-ruta);
-    --bs-btn-hover-color: var(--azul-noche);
-    --bs-btn-hover-bg: var(--naranja-pedal);
-    --bs-btn-hover-border-color: var(--naranja-pedal);
-    --bs-btn-active-color: var(--azul-noche);
-    --bs-btn-active-bg: var(--naranja-pedal);
-    --bs-btn-active-border-color: var(--naranja-pedal);
-<<<<<<< HEAD
-    --bs-btn-focus-shadow-rgb: 30, 122, 79;
-}
-
-.bg-primary {
-    color: var(--blanco);
-=======
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
+    --bs-btn-focus-shadow-rgb: var(--naranja-pedal-rgb);
 }
 
 small,
@@ -476,98 +425,48 @@ dt {
     }
 }
 
-
 .enlace-whatsapp {
-    z-index: 2;
+    z-index: 1030;
     width: 3.75rem;
     height: 3.75rem;
-<<<<<<< HEAD
-    border: 2px solid var(--azul-noche);
-    border-radius: 50%;
-    background-color: var(--naranja-pedal);
-    color: var(--azul-noche);
-=======
     border: 2px solid var(--blanco);
     border-radius: 50%;
     background-color: #25D366;
     color: var(--blanco);
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
+    font-size: 1.75rem;
     text-decoration: none;
     box-shadow: 0 0.25rem 0.875rem rgb(20 33 61 / 25%);
     transition: transform 180ms ease, background-color 180ms ease;
 }
-
-<<<<<<< HEAD
-.enlace-whatsapp .bi {
-    display: block;
-    width: 1.8rem;
-    height: 1.8rem;
-    font-size: 1.8rem;
-    line-height: 1;
-=======
 .enlace-whatsapp svg {
-    width: 1.8rem;
-    height: 1.8rem;
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
+    width: 2.2rem; 
+    height: 2.2rem;  
 }
 
 .enlace-whatsapp:hover,
 .enlace-whatsapp:focus {
     transform: scale(1.08);
-<<<<<<< HEAD
-    background-color: var(--naranja-pedal);
-    color: var(--azul-noche);
-}
-
-.pie-marca {
-    border-radius: 0.75rem;
-    background-color: var(--azul-noche);
-    color: var(--blanco);
-}
-
-.pie-marca h2 {
-    color: var(--blanco);
-}
-
-.pie-marca a {
-    color: var(--naranja-pedal);
-}
-
-=======
     background-color: #1fba59;
     color: var(--blanco);
 }
 
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
+/* Formulario y componentes de reservas (MiniReto 11 y 12) */
 fieldset {
     border: 1px solid var(--gris-asfalto);
+    border-radius: 0.5rem;
+    background-color: var(--blanco);
 }
 
 legend {
     color: var(--azul-noche);
-    font-weight: 600;
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    float: none;
+    width: auto;
 }
 
 input {
     accent-color: var(--verde-ruta);
-}
-
-input:not([type="checkbox"]):not([type="radio"]):not(.form-control),
-select:not(.form-select),
-textarea:not(.form-control) {
-    padding: var(--espacio-pequeno) var(--espacio-medio);
-    border: 1px solid var(--gris-asfalto);
-    border-radius: 0.25rem;
-    background-color: var(--crema);
-    color: var(--azul-noche);
-    font: inherit;
-}
-
-input:not([type="checkbox"]):not([type="radio"]):not(.form-control):focus,
-select:not(.form-select):focus,
-textarea:not(.form-control):focus {
-    outline: 0.1875rem solid var(--verde-ruta);
-    outline-offset: 0.125rem;
 }
 
 .formulario-reserva .form-control,
@@ -583,13 +482,21 @@ textarea:not(.form-control):focus {
     box-shadow: 0 0 0 0.25rem rgb(30 122 79 / 25%);
 }
 
-<<<<<<< HEAD
-.formulario-reserva .invalid-feedback {
-    color: #B02A37;
+.alerta-marca {
+    background-color: var(--crema);
+    border: 1px solid var(--naranja-pedal);
+    color: var(--azul-noche);
 }
 
-=======
->>>>>>> 44da83fe42e7763c19660c5991fc9ab1a7e5bbc8
+.modal-header-marca {
+    background-color: var(--azul-noche);
+    color: var(--blanco);
+}
+
+.modal-header-marca .modal-title {
+    color: var(--blanco);
+}
+
 @media (min-width: 48rem) {
     /* Las tablas conservan su formato propio en pantallas medianas y grandes. */
     .tabla-responsiva {
